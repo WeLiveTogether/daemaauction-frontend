@@ -1,9 +1,14 @@
-import GlobalStyle from "./styles/globalStyle";
+import RootRouter from "./route";
+import { Global } from "@emotion/react";
+import { reset } from "./styles/globalStyle";
 
-export default function App() {
+const App = ():JSX.Element => {
   return (
     <>
-    <GlobalStyle/>
+      <Global styles={reset} />    
+      <RootRouter />
     </>
   );
 }
+
+export default App;
