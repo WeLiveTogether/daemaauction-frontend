@@ -1,4 +1,4 @@
-import Background from "../../components/Background/Background";
+import Background from "../../components/Background/background";
 
 const RegisterContainer = (): JSX.Element => {
   return (

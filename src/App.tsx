@@ -1,4 +1,4 @@
-import RootRouter from "./route";
+import RootRouter from "./router";
 import { Global } from "@emotion/react";
 import { reset } from "./styles/globalStyle";
 

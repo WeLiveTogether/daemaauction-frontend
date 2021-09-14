@@ -1,5 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
-import Mainroute from './MainRouter';
+import Mainroute from './mainRouter';
 
 const RootRouter = (): JSX.Element => {
   return (
