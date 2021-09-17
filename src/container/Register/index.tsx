@@ -1,9 +1,11 @@
-import Background from "../../components/Background/background";
+import LoginBackground from "../../components/Background/LoginBackground/LoginBackground";
+import Login from "../../components/Login/Login";
 
 const RegisterContainer = (): JSX.Element => {
   return (
     <>
-      <Background />
+      <LoginBackground/>
+      <Login />
     </>
   );
 };
