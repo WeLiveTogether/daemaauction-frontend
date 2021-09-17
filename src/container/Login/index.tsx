@@ -1,7 +1,7 @@
 import LoginBackground from "../../components/Background/LoginBackground/LoginBackground";
 import Login from "../../components/Login/Login";
 
-const RegisterContainer = (): JSX.Element => {
+const LoginContaier = (): JSX.Element => {
   return (
     <>
       <LoginBackground/>
@@ -10,4 +10,4 @@ const RegisterContainer = (): JSX.Element => {
   );
 };
 
-export default RegisterContainer;
+export default LoginContaier;
