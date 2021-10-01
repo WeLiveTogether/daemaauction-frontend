@@ -4,3 +4,6 @@ export { default as rightTopGreen } from "./images/rightTopGreen.svg";
 export { default as leftTopYellow } from "./images/leftTopYellow.svg";
 export { default as leftTopGreen } from "./images/leftTopGreen.svg";
 export { default as leftBottomYellow } from "./images/leftBottomYellow.svg";
+export { default as HeaderLogo } from "./headerImg/HeaderLogo.svg";
+export { default as Person } from "./headerImg/Person.svg"
+export { default as Chatting } from "./headerImg/Chatting.svg"
