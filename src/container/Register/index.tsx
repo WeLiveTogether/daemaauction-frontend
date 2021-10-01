@@ -1,10 +1,12 @@
-import Background from "../../components/Background/background";
-import Header from '../../components/Header/Header'
+
+import LoginBackground from "../../components/Background/LoginBackground/LoginBackground";
+import Login from "../../components/Login/Login";
+
 const RegisterContainer = (): JSX.Element => {
   return (
     <>
-      <Background />
-      <Header />
+      <LoginBackground/>
+      <Login />
     </>
   );
 };

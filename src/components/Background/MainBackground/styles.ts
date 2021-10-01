@@ -1,10 +1,5 @@
 import styled from "@emotion/styled";
-import { leftTopGreen, leftTopYellow, rightTopGreen, rightTopYellow, rightBottomGreen, leftBottomYellow } from '../../assets/index'
-
-
-export const Container = styled.div`
-  position: static;
-`
+import { leftTopGreen, leftTopYellow, rightTopGreen, rightTopYellow, rightBottomGreen, leftBottomYellow } from '../../../assets/index'
 
 export const LeftTopGreen = styled.div`
   position: absolute;
