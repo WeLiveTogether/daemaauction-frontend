@@ -1,14 +1,18 @@
 import React, { FC } from "react";
 import { Switch, Route } from "react-router-dom";
-const RegisterContainer = React.lazy(() => import('../container/Register'))
-const MainContainer = React.lazy(() => import('../container/Main'))
+import {
+  MainContainer,
+  RegisterContainer,
+  HotContainer
+} from '../container'
 
 const MainRouter: FC = (): JSX.Element => {
   return (
     <>
       <Switch>
-        <Route exact path="/" component={MainContainer}/>
-        <Route exact path="/login" component={RegisterContainer}/>
+        <Route exact path="/" component={MainContainer} />
+        <Route exact path="/login" component={RegisterContainer} />
+        <Route exact path="/hot" component={HotContainer} />
       </Switch>
     </>
   );
