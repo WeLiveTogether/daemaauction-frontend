@@ -3,7 +3,8 @@ import Background from "../../components/Background/MainBackground/MainBackgroun
 const MainContainer = (): JSX.Element => {
   return (
     <>
-      <Background />
+      <Background>
+      </Background>
     </>
   );
 };
