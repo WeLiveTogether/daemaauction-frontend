@@ -12,3 +12,6 @@ export { default as rightPolygon } from "./images/rightPolygon.svg";
 export { default as rightHalf } from "./images/rightHalf.svg";
 export { default as testItem } from "./images/testItem.svg";
 export { default as count } from "./icons/count.svg";
+export { default as defaultProfile } from "./images/defaultProfile.svg";
+export { default as leftChevron } from "./icons/leftChevron.svg";
+export { default as rightChevron } from "./icons/rightChevron.svg";
