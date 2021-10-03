@@ -1,5 +1,5 @@
 import * as S from "./styles";
-import { count , testImg } from '../../assets/index';
+import { count , testItem } from '../../assets/index';
 const Main = (): JSX.Element => {
 
   const hotItem = [1,2,3,4,5,6,7,8];
@@ -8,7 +8,7 @@ const Main = (): JSX.Element => {
   const hotItemList = hotItem.map((_, index) => (
     <S.HotItem key={index}>
       <S.ItemImg>
-        <img alt="productImg" src={testImg}/>
+        <img alt="productImg" src={testItem}/>
       </S.ItemImg>
       <S.ItemTitle>
         2021년 햇꿀고구마 팝니다.
@@ -32,7 +32,7 @@ const Main = (): JSX.Element => {
   const recentlyItemList = recentlyItem.map((_, index) => (
     <S.HotItem key={index}>
       <S.ItemImg>
-        <img alt="productImg" src={testImg}/>
+        <img alt="productImg" src={testItem}/>
       </S.ItemImg>
       <S.ItemTitle>
         2021년 햇꿀고구마 팝니다.
