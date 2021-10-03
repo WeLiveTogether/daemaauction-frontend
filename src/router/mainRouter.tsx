@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Switch, Route } from "react-router-dom";
 const RegisterContainer = React.lazy(() => import('../container/Register'))
 const MainContainer = React.lazy(() => import('../container/Main'))
