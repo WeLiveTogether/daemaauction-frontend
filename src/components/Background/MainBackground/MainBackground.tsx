@@ -1,4 +1,4 @@
-import * as S from './styles'
+import * as S from "./styles";
 
 type PropType = {
   children: React.ReactNode;
@@ -21,7 +21,7 @@ const Background = ({children} : PropType): JSX.Element => {
         </S.GridContainer>
       </S.Container>
     </>
-  )
-}
+  );
+};
 
 export default Background;
