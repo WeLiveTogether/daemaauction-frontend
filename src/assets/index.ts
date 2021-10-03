@@ -10,3 +10,5 @@ export { default as Chatting } from "./headerImg/Chatting.svg"
 export { default as leftGroup } from "./images/leftGroup.svg";
 export { default as rightPolygon } from "./images/rightPolygon.svg";
 export { default as rightHalf } from "./images/rightHalf.svg";
+export { default as testImg } from "./images/testItem.svg";
+export { default as count } from "./icons/count.svg";
