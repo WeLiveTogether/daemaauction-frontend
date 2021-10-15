@@ -91,6 +91,7 @@ export const reset = css`
     font-family: "Spoqa Han Sans Neo", "sans-serif";
     vertical-align: baseline;
     font-smooth: antialiased;
+    -webkit-font-smoothing: antialiased;
   }
   /* HTML5 display-role reset for older browsers */
   article,
