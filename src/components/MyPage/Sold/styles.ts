@@ -1,28 +1,11 @@
 import styled from "@emotion/styled";
 
 export const ItemContainer = styled.div`
+  width: 100%;
   margin-top: 80px;
   position: relative;
+  
 `;
-
-export const ChevronContainer = styled.div`
-  width: 100%; 
-  top: 50%;
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  transform: translateY(-50%);
-`
-
-export const LeftChevron = styled.img`
-  position: relative;
-  transform: translateX(-48px);
-  `
-
-export const RightChevron = styled.img`
-  position: relative;
-  transform: translateX(48px);
-`
 
 export const SmallTitle = styled.div`
   margin-bottom: 24px;
@@ -30,9 +13,19 @@ export const SmallTitle = styled.div`
   font-weight: 400;
 `;
 
+export const noneItem = styled.div`
+  text-align: center;
+  margin-top: 301px;
+  margin-bottom: 317px;
+  color: #8395a7;
+  font-weight: 400px;
+  font-size: 24px;
+`
+
 export const ItemList = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   grid-gap: 30px;
 `;
 

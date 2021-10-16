@@ -5,29 +5,19 @@ export const ItemContainer = styled.div`
   position: relative;
 `;
 
-export const ChevronContainer = styled.div`
-  width: 100%; 
-  top: 50%;
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  transform: translateY(-50%);
-`
-
-export const LeftChevron = styled.img`
-  position: relative;
-  transform: translateX(-48px);
-  `
-
-export const RightChevron = styled.img`
-  position: relative;
-  transform: translateX(48px);
-`
-
 export const SmallTitle = styled.div`
   margin-bottom: 24px;
   font-size: 24px;
   font-weight: 400;
+`;
+
+export const noneItem = styled.div`
+  text-align: center;
+  margin-top: 301px;
+  margin-bottom: 317px;
+  color: #8395a7;
+  font-weight: 400px;
+  font-size: 24px;
 `;
 
 export const ItemList = styled.div`
