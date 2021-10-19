@@ -3,7 +3,8 @@ import { Switch, Route } from "react-router-dom";
 import {
   MainContainer,
   RegisterContainer,
-  HotContainer
+  HotContainer,
+  RecentContaier,
 } from '../container'
 
 const MainRouter: FC = (): JSX.Element => {
@@ -13,6 +14,7 @@ const MainRouter: FC = (): JSX.Element => {
         <Route exact path="/" component={MainContainer} />
         <Route exact path="/login" component={RegisterContainer} />
         <Route exact path="/hot" component={HotContainer} />
+        <Route exact path="/recent" component={RecentContaier} />
       </Switch>
     </>
   );
