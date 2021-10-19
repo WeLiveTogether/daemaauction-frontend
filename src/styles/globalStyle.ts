@@ -92,6 +92,9 @@ export const reset = css`
     vertical-align: baseline;
     font-smooth: antialiased;
   }
+  body{
+    background-color: #F7FbFE;
+  }
   /* HTML5 display-role reset for older browsers */
   article,
   aside,
