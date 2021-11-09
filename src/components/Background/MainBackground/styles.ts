@@ -1,5 +1,23 @@
 import styled from "@emotion/styled";
-import { leftTopGreen, leftTopYellow, rightTopGreen, rightTopYellow, rightBottomGreen, leftBottomYellow } from '../../../assets/index'
+import {
+  leftTopGreen,
+  leftTopYellow,
+  rightTopGreen,
+  rightTopYellow,
+  rightBottomGreen,
+  leftBottomYellow,
+} from "../../../assets/index";
+
+export const Container = styled.div`
+  width: 1114px;
+  margin: 0 auto;
+`;
+
+export const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 30px;
+`;
 
 export const LeftTopGreen = styled.div`
   position: absolute;
@@ -7,7 +25,7 @@ export const LeftTopGreen = styled.div`
   width: 168px;
   height: 232px;
   background-image: url(${leftTopGreen});
-`
+`;
 
 export const LeftTopYellow = styled.div`
   position: absolute;
@@ -15,7 +33,7 @@ export const LeftTopYellow = styled.div`
   width: 256px;
   height: 510px;
   background-image: url(${leftTopYellow});
-`
+`;
 
 export const RightTopGreen = styled.div`
   position: absolute;
@@ -24,7 +42,7 @@ export const RightTopGreen = styled.div`
   width: 343px;
   height: 909px;
   background-image: url(${rightTopGreen});
-`
+`;
 
 export const RightTopYellow = styled.div`
   position: absolute;
@@ -33,7 +51,7 @@ export const RightTopYellow = styled.div`
   width: 176px;
   height: 176px;
   background-image: url(${rightTopYellow});
-`
+`;
 
 export const YellowHalf = styled.div`
   position: absolute;
@@ -41,7 +59,7 @@ export const YellowHalf = styled.div`
   width: 147px;
   height: 230px;
   background-image: url(${leftBottomYellow});
-`
+`;
 
 export const GreenPolygon = styled.div`
   position: absolute;
@@ -50,4 +68,4 @@ export const GreenPolygon = styled.div`
   width: 367px;
   height: 434px;
   background-image: url(${rightBottomGreen});
-`
+`;
