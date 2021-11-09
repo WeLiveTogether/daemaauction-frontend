@@ -4,6 +4,7 @@ import { leftGroup, rightHalf, rightPolygon } from '../../../assets/index'
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
+  position: absolute;
 `
 
 export const LeftGroup = styled.div`

@@ -1,32 +1,40 @@
 import styled from "@emotion/styled";
 
-export const Container = styled.div`
-  margin-top: 60px;
-  grid-column: 1/13;
-`;
-
-export const Title = styled.div`
-  font-size: 32px;
-  font-weight: bold;
-`;
-
 export const ItemContainer = styled.div`
-  margin-top: 24px;
+  margin-top: 80px;
+  position: relative;
 `;
 
-export const HotItemList = styled.div`
+export const SmallTitle = styled.div`
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 400;
+`;
+
+export const noneItem = styled.div`
+  text-align: center;
+  margin-top: 301px;
+  margin-bottom: 317px;
+  color: #8395a7;
+  font-weight: 400px;
+  font-size: 24px;
+`;
+
+export const ItemList = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 30px;
 `;
 
-export const HotItem = styled.div`
+export const Item = styled.div`
   margin-bottom: 30px;
 `;
 
 export const ItemImg = styled.div`
-  width: 100%;
+  width: 256px;
+  height: 194px;
   margin-bottom: 12px;
+  position: relative;
 `;
 
 export const ItemTitle = styled.div`

@@ -9,7 +9,7 @@ import {
 } from "../../../assets/index";
 
 export const Container = styled.div`
-  width: 1112px;
+  width: 1114px;
   margin: 0 auto;
 `;
 

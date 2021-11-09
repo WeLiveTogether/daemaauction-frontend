@@ -93,6 +93,9 @@ export const reset = css`
     font-smooth: antialiased;
     -webkit-font-smoothing: antialiased;
   }
+  body{
+    background-color: #F7FbFE;
+  }
   /* HTML5 display-role reset for older browsers */
   article,
   aside,

@@ -9,18 +9,17 @@ export const Title = styled.div`
   font-size: 32px;
   font-weight: bold;
 `;
-
 export const ItemContainer = styled.div`
   margin-top: 24px;
 `;
 
-export const HotItemList = styled.div`
+export const RecentItemList = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 30px;
 `;
 
-export const HotItem = styled.div`
+export const RecentItem = styled.div`
   margin-bottom: 30px;
 `;
 
