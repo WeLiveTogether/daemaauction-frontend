@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import { color } from "../../styles/color";
+import { font } from "../../styles/font";
 
 export const Container = styled.div`
   width: 1110px;
@@ -11,10 +13,6 @@ export const Container = styled.div`
   column-gap: 30px;
 `;
 
-export const LoginContainer = styled.div`
-  width: 100%;
-`;
-
 export const GridContainer = styled.div`
   grid-column: 13;
   display: flex;
@@ -25,8 +23,9 @@ export const LoginButton = styled.button`
   width: 172px;
   height: 172px;
   text-align: center;
-  background-color: #1cd0a1;
-  color: white;
+  background-color: ${color.green};
+  color: ${color.white};
+  font: ${font.subtitle};
   border: none;
   border-radius: 50px;
   outline: none;
