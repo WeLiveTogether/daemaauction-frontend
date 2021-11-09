@@ -14,20 +14,27 @@ export const Container = styled.div`
 `;
 
 export const GridContainer = styled.div`
-  grid-column: 13;
+  grid-column: 9/13;
   display: flex;
   justify-items: end;
   align-items: center;
 `;
+
+export const LoginContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+`;
+
 export const LoginButton = styled.button`
-  width: 172px;
-  height: 172px;
+  padding: 8px 0px;
   text-align: center;
-  background-color: ${color.green};
-  color: ${color.white};
+  background-color: ${(props) => props.color};
   font: ${font.subtitle};
+  color: ${color.white};
   border: none;
-  border-radius: 50px;
+  border-radius: 5px;
   outline: none;
   cursor: pointer;
 `;
