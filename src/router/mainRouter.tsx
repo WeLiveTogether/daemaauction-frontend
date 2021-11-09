@@ -6,7 +6,8 @@ import {
   HotContainer,
   LoginContainer,
   RecentContaier,
-} from '../container'
+  ChatContainer,
+} from "../container";
 
 const MainRouter: FC = (): JSX.Element => {
   return (
@@ -15,8 +16,9 @@ const MainRouter: FC = (): JSX.Element => {
         <Route exact path="/" component={MainContainer} />
         <Route exact path="/hot" component={HotContainer} />
         <Route exact path="/mypage" component={MyPageContainer} />
-        <Route exact path="/login" component={LoginContainer}/>
+        <Route exact path="/login" component={LoginContainer} />
         <Route exact path="/recent" component={RecentContaier} />
+        <Route exact path="/chat" component={ChatContainer} />
       </Switch>
     </>
   );
