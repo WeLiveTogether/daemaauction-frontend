@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
+import { color } from "../../styles/color";
 export const Header = styled.div`
   width: 100%;
   height: 64px;
@@ -10,7 +11,7 @@ export const Header = styled.div`
   align-items: center;
   * {
     vertical-align: middle;
-    color: black;
+    color: ${color.black};
     text-decoration: none;
   }
   & img {
@@ -62,20 +63,20 @@ export const NavItem = styled.div`
   }
 `;
 export const NavItemInner = styled.div`
-  background-color: white;
+  background-color: ${color.white};
   display: none;
   height: 40px;
   line-height: 40px;
   :hover {
-    background-color: #1cd0a1;
+    background-color: ${color.green};
     cursor: pointer;
-    color: white;
+    color: ${color.white};
   }
 `;
 export const LogoutBtn = styled.button`
   width: 90px;
   height: 30px;
-  border: 1px solid black;
+  border: 1px solid ${color.black};
   background: none;
   border-radius: 20px;
 `;
