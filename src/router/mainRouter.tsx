@@ -1,16 +1,26 @@
-import React,  { FC, Suspense } from "react";
+import { FC } from "react";
 import { Switch, Route } from "react-router-dom";
-const RegisterContainer = React.lazy(() => import('../container/Register'))
-const MainContainer = React.lazy(() => import('../container/Main'))
+import {
+  MainContainer,
+  MyPageContainer,
+  HotContainer,
+  LoginContainer,
+  RecentContaier,
+  ChatContainer,
+} from "../container";
 
 const MainRouter: FC = (): JSX.Element => {
   return (
-    <Suspense fallback={<div>로딩중...</div>}>
+    <>
       <Switch>
-        <Route exact path="/" component={MainContainer}/>
-        <Route exact path="/login" component={RegisterContainer}/>
+        <Route exact path="/" component={MainContainer} />
+        <Route exact path="/hot" component={HotContainer} />
+        <Route exact path="/mypage" component={MyPageContainer} />
+        <Route exact path="/login" component={LoginContainer} />
+        <Route exact path="/recent" component={RecentContaier} />
+        <Route exact path="/chat" component={ChatContainer} />
       </Switch>
-    </Suspense>
+    </>
   );
 };
 

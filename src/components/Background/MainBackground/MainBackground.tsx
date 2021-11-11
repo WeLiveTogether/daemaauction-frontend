@@ -1,6 +1,10 @@
 import * as S from "./styles";
 
-const Background = (): JSX.Element => {
+type PropType = {
+  children: React.ReactNode;
+};
+
+const Background = ({ children }: PropType): JSX.Element => {
   return (
     <>
       <S.LeftTopYellow />
@@ -9,6 +13,9 @@ const Background = (): JSX.Element => {
       <S.RightTopYellow />
       <S.GreenPolygon />
       <S.YellowHalf />
+      <S.Container>
+        <S.GridContainer>{children}</S.GridContainer>
+      </S.Container>
     </>
   );
 };
