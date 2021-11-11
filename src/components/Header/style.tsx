@@ -66,7 +66,7 @@ export const NavItem = styled.div`
   }
 `;
 export const NavItemInner = styled.div`
-  background-color: ${color.white};
+  background-color: ${color.background};
   display: none;
   height: 40px;
   line-height: 40px;
