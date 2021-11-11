@@ -1,6 +1,6 @@
 import * as S from "./styles";
 
-const Background = (): JSX.Element => {
+const DetailBackground = ():JSX.Element => {
   return (
     <>
       <S.LeftTopYellow />
@@ -8,9 +8,8 @@ const Background = (): JSX.Element => {
       <S.RightTopGreen />
       <S.RightTopYellow />
       <S.GreenPolygon />
-      <S.YellowHalf />
     </>
   );
 };
 
-export default Background;
+export default DetailBackground;

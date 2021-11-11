@@ -7,3 +7,4 @@ export { default as leftBottomYellow } from "./images/leftBottomYellow.svg";
 export { default as leftGroup } from "./images/leftGroup.svg";
 export { default as rightPolygon } from "./images/rightPolygon.svg";
 export { default as rightHalf } from "./images/rightHalf.svg";
+export { default as rightMedium } from "./images/rightMedium.svg";
