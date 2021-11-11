@@ -49,6 +49,9 @@ export const NavWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin-left: 10px;
+  & {
+    z-index: 2;
+  }
 `;
 export const NavItem = styled.div`
   line-height: 65px;
