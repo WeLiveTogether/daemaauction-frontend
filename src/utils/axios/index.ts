@@ -28,7 +28,7 @@ const refresh = async (config: AxiosRequestConfig) => {
 
   if (!refreshToken || !expireAt) {
     //토큰이 존재하지 않음
-    window.location.href = "/";
+    window.location.href = "/login";
     return config;
   }
 
@@ -51,7 +51,7 @@ const refresh = async (config: AxiosRequestConfig) => {
       accessToken = access_token;
     } catch (error) {
       //리프레시 실패(리스레시 토큰 만료)
-      window.location.href = "/";
+      window.location.href = "/login";
       return config;
     }
   }
