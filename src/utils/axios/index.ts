@@ -26,7 +26,7 @@ const refresh = async (config: AxiosRequestConfig) => {
   const refreshToken = localStorage.getItem("refresh_token");
   const expireAt = localStorage.getItem("expire_at");
 
-  if (!accessToken || !refreshToken || !expireAt) {
+  if (!refreshToken || !expireAt) {
     //토큰이 존재하지 않음
     window.location.href = "/";
     return config;
@@ -45,6 +45,7 @@ const refresh = async (config: AxiosRequestConfig) => {
         })
       ).data.body;
 
+      localStorage.setItem("access_token", access_token);
       localStorage.setItem("refresh_token", refresh_token);
       localStorage.setItem("expire_at", addMinutes(new Date(), EXPIRE_MINUTE).toString());
       accessToken = access_token;
