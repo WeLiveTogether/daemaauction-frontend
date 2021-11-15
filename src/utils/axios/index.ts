@@ -23,11 +23,10 @@ const refresh = async (config: AxiosRequestConfig) => {
   }
 
   let accessToken = localStorage.getItem("access_token");
-  const refreshToken = localStorage.getItem("refresh_token");
   const expireAt = localStorage.getItem("expire_at");
 
-  if (!refreshToken || !expireAt) {
-    //토큰이 존재하지 않음
+  if (!expireAt) {
+    //만료시간이 없음
     window.location.href = "/login";
     return config;
   }
@@ -37,16 +36,9 @@ const refresh = async (config: AxiosRequestConfig) => {
   if (expireDate.getTime() < new Date().getTime()) {
     //토큰이 만료됨
     try {
-      const { access_token, refresh_token } = (
-        await axios.get<refreshTokenResponse>(uri.refresh, {
-          headers: {
-            Authorization: refreshToken,
-          },
-        })
-      ).data.body;
+      const { access_token } = (await axios.get<refreshTokenResponse>(uri.refresh)).data.body;
 
       localStorage.setItem("access_token", access_token);
-      localStorage.setItem("refresh_token", refresh_token);
       localStorage.setItem("expire_at", addMinutes(new Date(), EXPIRE_MINUTE).toString());
       accessToken = access_token;
     } catch (error) {
