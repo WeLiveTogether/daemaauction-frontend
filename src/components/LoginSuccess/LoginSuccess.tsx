@@ -6,7 +6,8 @@ const LoginSuccess = () => {
   const { push } = useHistory();
 
   const addMinutes = (date: Date, minutes: number) => {
-    return date.setMinutes(date.getMinutes() + minutes);
+    date.setMinutes(date.getMinutes() + minutes);
+    return date;
   };
 
   useEffect(() => {
