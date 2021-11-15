@@ -1,21 +1,35 @@
-import * as S from './styles'
+import * as S from './styles';
+import Google from '../Oauth/Google/Google';
+import { color } from '../../styles/color';
+import React from 'react';
 
-const Login = ():JSX.Element => {
+const Login = (): JSX.Element => {
+  interface Button {
+    component: () => JSX.Element;
+  }
+
+  const buttons: Button[] = [
+    {
+      component: Google
+    },
+    // {
+      // component: 
+    // }
+  ];
+
   return (
     <S.Container>
       <S.GridContainer>
         <S.LoginContainer>
-          <S.Title>로그인</S.Title>
-          <S.GuideText>아이디</S.GuideText>
-          <S.InputID />
-          <S.GuideText>비밀번호</S.GuideText>
-          <S.InputPassword type="password"/>
-          <S.LoginButton>로그인</S.LoginButton>
-          <S.Semicolone>with Semicolone;</S.Semicolone>
+          {buttons.map((value) => {
+            const { component } = value;
+            const com = React.createElement(component);
+            return com;
+          })}
         </S.LoginContainer>
       </S.GridContainer>
     </S.Container>
   );
-}
+};
 
 export default Login;

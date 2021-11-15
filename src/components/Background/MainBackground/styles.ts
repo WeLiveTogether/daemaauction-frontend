@@ -8,6 +8,13 @@ import {
   leftBottomYellow,
 } from "../../../assets/index";
 
+export const BackgroundContainer = styled.div`
+  position: absolute;
+  width: 100vw;
+  overflow: hidden;
+  z-index: -10
+` 
+
 export const Container = styled.div`
   width: 1114px;
   margin: 0 auto;

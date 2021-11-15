@@ -1,34 +1,33 @@
 import React from "react";
 import * as S from "./style";
 import { HeaderLogo, Chatting, Person } from "../../assets";
-
+import { Link } from "react-router-dom";
+import Nav from "./Nav";
 const Header = (): JSX.Element => {
   return (
     <S.Header>
-      <div>
+      <S.Logo to="#">
         <img src={HeaderLogo} alt="" />
-        <span>대마켓</span>
-      </div>
+        <span>대마옥션</span>
+      </S.Logo>
       <nav>
-        <div>
+        <Link to="#">
           <img src={Person} alt="" />
           <span>마이페이지</span>
-        </div>
-        <span>의류</span>
-        <span>전자기기</span>
-        <span>음식</span>
-        <span>도서</span>
-        <span>생활용품</span>
-        <span>완구/취미</span>
+        </Link>
+        <Nav />
       </nav>
-      <div>
+      <S.Chatting to="#">
         <img src={Chatting} alt="" />
         <span>채팅</span>
-      </div>
-      <S.MyProfile>
-        <S.ProfileCircle />
-        <span>김진근</span>
-      </S.MyProfile>
+      </S.Chatting>
+      <S.UserInfo>
+        <S.MyProfile>
+          <S.ProfileCircle />
+          <span>김진근</span>
+        </S.MyProfile>
+        <S.LogoutBtn>로그아웃</S.LogoutBtn>
+      </S.UserInfo>
     </S.Header>
   );
 };
