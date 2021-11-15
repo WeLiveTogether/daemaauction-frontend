@@ -5,6 +5,5 @@ export default interface refreshTokenResponse {
   };
   body: {
     access_token: string;
-    refresh_token: string;
   };
 }
