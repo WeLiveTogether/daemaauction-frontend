@@ -36,7 +36,11 @@ const refresh = async (config: AxiosRequestConfig) => {
   if (expireDate.getTime() < new Date().getTime()) {
     //토큰이 만료됨
     try {
-      const { access_token } = (await axios.get<refreshTokenResponse>(uri.refresh)).data.body;
+      const request = axios.create({
+        baseURL: DEAMA_AUCTION,
+        withCredentials: true,
+      });
+      const { access_token } = (await request.get<refreshTokenResponse>(uri.refresh)).data.body;
 
       localStorage.setItem("access_token", access_token);
       localStorage.setItem("expire_at", addMinutes(new Date(), EXPIRE_MINUTE).toString());
