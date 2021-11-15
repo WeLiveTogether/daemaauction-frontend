@@ -47,7 +47,10 @@ const refresh = async (config: AxiosRequestConfig) => {
 
       localStorage.setItem("access_token", access_token);
       localStorage.setItem("refresh_token", refresh_token);
-      localStorage.setItem("expire_at", addMinutes(new Date(), EXPIRE_MINUTE).toString());
+      localStorage.setItem(
+        "expire_at",
+        addMinutes(new Date(), EXPIRE_MINUTE).toString()
+      );
       accessToken = access_token;
     } catch (error) {
       //리프레시 실패(리스레시 토큰 만료)
@@ -56,7 +59,7 @@ const refresh = async (config: AxiosRequestConfig) => {
     }
   }
 
-  config.headers["Authorization"] = `Bearer ${accessToken}`;
+  // config.headers["Authorization"] = `Bearer ${accessToken}`;
 
   return config;
 };
@@ -75,7 +78,9 @@ instance.interceptors.response.use(
   }
 );
 
-export const getRequest = (baseURL: typeof DEAMA_AUCTION | typeof DHRTUSEOAK) => {
+export const getRequest = (
+  baseURL: typeof DEAMA_AUCTION | typeof DHRTUSEOAK
+) => {
   instance.defaults["baseURL"] = baseURL;
   return instance;
 };

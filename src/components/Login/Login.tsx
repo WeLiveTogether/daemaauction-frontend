@@ -1,34 +1,20 @@
-import { color } from "../../styles/color";
-import * as S from "./styles";
+import * as S from './styles';
+import Google from '../Oauth/Google/Google';
+import { color } from '../../styles/color';
+import React from 'react';
 
 const Login = (): JSX.Element => {
   interface Button {
-    text: string;
-    color: string;
-    // onclick: () => void;
+    component: () => JSX.Element;
   }
 
   const buttons: Button[] = [
     {
-      text: "네이버 로그인",
-      color: color.green,
-      // onclick: naver(),
+      component: Google
     },
-    {
-      text: "카카오 로그인",
-      color: color.yellow,
-      // onclick: kakao(),
-    },
-    {
-      text: "페이스북 로그인",
-      color: color.blue,
-      // onclick: facebook(),
-    },
-    {
-      text: "구글 로그인",
-      color: color.gray,
-      // onclick: google(),
-    },
+    // {
+      // component: 
+    // }
   ];
 
   return (
@@ -36,8 +22,9 @@ const Login = (): JSX.Element => {
       <S.GridContainer>
         <S.LoginContainer>
           {buttons.map((value) => {
-            const { color, text } = value;
-            return <S.LoginButton color={color}>{text}</S.LoginButton>;
+            const { component } = value;
+            const com = React.createElement(component);
+            return com;
           })}
         </S.LoginContainer>
       </S.GridContainer>
