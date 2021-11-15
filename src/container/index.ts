@@ -4,3 +4,4 @@ export { default as HotContainer } from "./Hot";
 export { default as MyPageContainer } from "./MyPage"
 export { default as RecentContaier } from "./Recent"
 export { default as ChatContainer } from "./Chat";
+export { default as LoginSuccessContainer } from "./LoginSuccess";

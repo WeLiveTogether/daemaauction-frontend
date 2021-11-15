@@ -26,15 +26,3 @@ export const LoginContainer = styled.div`
   flex-direction: column;
   row-gap: 16px;
 `;
-
-export const LoginButton = styled.button`
-  padding: 8px 0px;
-  text-align: center;
-  background-color: ${(props) => props.color};
-  font: ${font.subtitle};
-  color: ${color.white};
-  border: none;
-  border-radius: 5px;
-  outline: none;
-  cursor: pointer;
-`;
