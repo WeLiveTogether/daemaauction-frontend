@@ -48,7 +48,7 @@ const refresh = async (config: AxiosRequestConfig) => {
     }
   }
 
-  // config.headers["Authorization"] = `Bearer ${accessToken}`;
+  config.headers["Authorization"] = `Bearer ${accessToken}`;
 
   return config;
 };
@@ -67,9 +67,7 @@ instance.interceptors.response.use(
   }
 );
 
-export const getRequest = (
-  baseURL: typeof DEAMA_AUCTION | typeof DHRTUSEOAK
-) => {
+export const getRequest = (baseURL: typeof DEAMA_AUCTION | typeof DHRTUSEOAK) => {
   instance.defaults["baseURL"] = baseURL;
   return instance;
 };
