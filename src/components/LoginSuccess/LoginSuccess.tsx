@@ -11,15 +11,21 @@ const LoginSuccess = () => {
   };
 
   useEffect(() => {
-    const token = query.get("token")?.toString() || "";
+    const token = query.get("token");
+    if (token) {
+      localStorage.setItem("expire_at", addMinutes(new Date(), 30).toString());
+      localStorage.setItem("access_token", token);
 
-    localStorage.setItem("expire_at", addMinutes(new Date(), 30).toString());
-    localStorage.setItem("access_token", token);
-
-    push("/");
+      push("/");
+    } else {
+      localStorage.removeItem("expire_at");
+      localStorage.removeItem("access_token");
+      push("/login");
+      alert("로그인 실패");
+    }
   }, []);
 
-  return <div>로그인 성공</div>;
+  return <div></div>;
 };
 
 export default LoginSuccess;
