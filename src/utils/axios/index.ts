@@ -2,6 +2,8 @@ import axios, { AxiosError, AxiosRequestConfig } from "axios";
 import uri from "../../constance/uri";
 import refreshTokenResponse from "../../models/dto/response/refreshTokenResponse";
 
+axios.defaults.withCredentials = true;
+
 const instance = axios.create({
   baseURL: "https://daemaauction.herokuapp.com",
   timeout: 500000,
