@@ -5,6 +5,7 @@ import refreshTokenResponse from "../../models/dto/response/refreshTokenResponse
 const instance = axios.create({
   baseURL: "https://daemaauction.herokuapp.com",
   timeout: 500000,
+  withCredentials: true,
 });
 
 export const DEAMA_AUCTION = "https://daemaauction.herokuapp.com";
