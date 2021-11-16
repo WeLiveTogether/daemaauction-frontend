@@ -42,7 +42,7 @@ const Nav = () => {
     <S.NavWrapper>
       {NavArr.map((nav, i) => (
         <S.NavItem key={i}>
-          <div className="navItemTitle">
+          <div className="navItemTitle" style={{ cursor: "pointer" }}>
             {nav}
             <img src={Select} alt="" />
           </div>

@@ -49,6 +49,9 @@ export const NavWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin-left: 10px;
+  & {
+    z-index: 2;
+  }
 `;
 export const NavItem = styled.div`
   line-height: 65px;
@@ -63,7 +66,7 @@ export const NavItem = styled.div`
   }
 `;
 export const NavItemInner = styled.div`
-  background-color: ${color.white};
+  background-color: ${color.background};
   display: none;
   height: 40px;
   line-height: 40px;
