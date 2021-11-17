@@ -10,33 +10,28 @@ const Background = ({ children }: PropType): JSX.Element => {
   const containerRef = useRef<HTMLDivElement>(null);
   const backgroundContainerRef = useRef<HTMLDivElement>(null);
 
-  const getHeight = () => {
-    const { current: container } = containerRef;
-    const { current: backgroundContainer } = backgroundContainerRef;
-
-    if (container && backgroundContainer) {
-      backgroundContainer.style.height = `${document.body.clientHeight}px`;
+  const onScroll = () => {
+    if (backgroundContainerRef.current) {
+      backgroundContainerRef.current.style.transform = `translateY(-${window.scrollY * 0.1}px)`;
     }
-    
-    return document.body.clientHeight;
-  }
-  
-  window.onload = getHeight;
+  };
 
   useEffect(() => {
-    getHeight();
-  }, [children]);
+    window.onscroll = onScroll;
+  }, []);
 
   return (
     <>
       <Header />
-      <S.BackgroundContainer ref={backgroundContainerRef}>
-        <S.LeftTopYellow />
-        <S.LeftTopGreen />
-        <S.RightTopGreen />
-        <S.RightTopYellow />
-        <S.GreenPolygon />
-        <S.YellowHalf />
+      <S.BackgroundContainer>
+        <S.BackgroundInner ref={backgroundContainerRef}>
+          <S.LeftTopYellow />
+          <S.LeftTopGreen />
+          <S.RightTopGreen />
+          <S.RightTopYellow />
+          <S.GreenPolygon />
+          <S.YellowHalf />
+        </S.BackgroundInner>
       </S.BackgroundContainer>
       <S.Container ref={containerRef}>
         <S.GridContainer>{children}</S.GridContainer>
