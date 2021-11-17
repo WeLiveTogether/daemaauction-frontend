@@ -26,6 +26,7 @@ export const BackgroundInner = styled.div`
 export const Container = styled.div`
   width: 1114px;
   margin: 0 auto;
+  margin-bottom: 120px;
 `;
 
 export const GridContainer = styled.div`
