@@ -99,3 +99,22 @@ export const Content = styled.div`
   width: 100%;
 `;
 
+export const ButtonContainer = styled.div`
+  width: 100%;
+  justify-content: center;
+  column-gap: 16px;
+  display: flex;
+`;
+
+export const Button = styled.button`
+  padding: 12px;
+  background-color: ${(props) => props.color};
+  border: 0;
+  border-radius: 5px;
+  color: ${color.white};
+  font: ${font.body3};
+  cursor: pointer;
+  &:active {
+    filter: brightness(0.9);
+  }
+`;

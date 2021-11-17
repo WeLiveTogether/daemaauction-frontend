@@ -3,6 +3,7 @@ import defaultImg from "../../assets/images/testItem.svg";
 import Slider from "../Slider/Slider";
 import User from "../../assets/icons/count.svg";
 import Time from "../../assets/icons/time.svg";
+import { color } from "../../styles/color";
 
 const ProductDetail = (): JSX.Element => {
   const imgList: JSX.Element[] = [
@@ -87,6 +88,10 @@ const ProductDetail = (): JSX.Element => {
         연락주세요.
         <br />
       </S.Content>
+      <S.ButtonContainer>
+        <S.Button color={color.green}>260,000₩에 경매 참여</S.Button>
+        <S.Button color={color.yellow}>350,000₩에 즉시 구매</S.Button>
+      </S.ButtonContainer>
     </S.Container>
   );
 };
