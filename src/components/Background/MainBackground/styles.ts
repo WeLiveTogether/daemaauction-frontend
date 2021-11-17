@@ -9,11 +9,17 @@ import {
 } from "../../../assets/index";
 
 export const BackgroundContainer = styled.div`
-  position: absolute;
+  position: fixed;
   width: 100vw;
+  height: 100vh;
   overflow: hidden;
-  z-index: -10
-` 
+  z-index: -10;
+  top: 0px;
+`;
+
+export const BackgroundInner = styled.div`
+  transition: transform 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+`;
 
 export const Container = styled.div`
   width: 1114px;
