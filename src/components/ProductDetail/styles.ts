@@ -5,6 +5,7 @@ import { font } from "../../styles/font";
 export const Container = styled.div`
   width: 100%;
   grid-column: 1/13;
+  margin-top: 60px;
 `;
 
 export const ImageContainer = styled.div`
@@ -18,6 +19,12 @@ export const Image = styled.img`
   border-radius: 5px;
   object-position: center;
   user-select: none;
+`;
+
+export const HeaderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
 `;
 
 export const TitleContainer = styled.div`
@@ -41,4 +48,45 @@ export const Title = styled.div`
 export const Gray = styled.div`
   font: ${font.body3};
   color: ${color.darkGray};
+`;
+
+export const DetailContainer = styled.div`
+  display: flex;
+  column-gap: 24px;
+`;
+
+export const MoneyContainer = styled.div`
+  display: flex;
+`;
+
+export const NowMoney = styled.div`
+  color: ${color.green};
+  font: ${font.body2};
+`;
+
+export const GrayMid = styled.div`
+  color: ${color.darkGray};
+  font: ${font.body2};
+`;
+
+export const UserContainer = styled.div`
+  img {
+    margin-right: 8px;
+    height: 16px;
+  }
+  color: ${color.darkGray};
+  font: ${font.body2};
+  display: flex;
+  align-items: center;
+`;
+
+export const TimeContainer = styled.div`
+  img {
+    margin-right: 8px;
+    height: 16px;
+  }
+  color: ${color.darkGray};
+  font: ${font.body3};
+  display: flex;
+  align-items: center;
 `;
