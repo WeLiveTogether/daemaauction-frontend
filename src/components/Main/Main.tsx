@@ -1,57 +1,42 @@
 import * as S from "./styles";
-import { count , testItem } from '../../assets/index';
+import { getPopularProducts, getLatestProducts } from "../../utils/api/Main";
+import { useEffect, useState } from "react";
+import productListResponse from "../../models/dto/response/productListResponse";
+import ProductCard from "../ProductCard/ProductCard";
 const Main = (): JSX.Element => {
+  const [hotProductList, setHotProductList] = useState<productListResponse>([]);
+  const [latestProductList, setLatestProductList] = useState<productListResponse>([]);
 
-  const hotItem = [1,2,3,4,5,6,7,8];
-  const recentlyItem = [1,2,3,4,5,6,7,8,9,10,11,12];
+  const setPopularProducts = async () => {
+    try {
+      const list = (await getPopularProducts()).data.slice(0, 8);
+      setHotProductList(list);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  const hotItemList = hotItem.map((_, index) => (
-    <S.HotItem key={index}>
-      <S.ItemImg>
-        <img alt="productImg" src={testItem}/>
-      </S.ItemImg>
-      <S.ItemTitle>
-        2021년 햇꿀고구마 팝니다.
-      </S.ItemTitle>
-      <S.ItemDetailTop>
-        <div>전자기기</div>
-        <div>김진근</div>
-      </S.ItemDetailTop>
-      <S.ItemDetailBottom>
-        <S.ItemPrice>
-          700,000₩
-        </S.ItemPrice>
-        <S.Count>
-          <S.CountImg alt="productImg" src={count} />
-          16명
-        </S.Count>
-      </S.ItemDetailBottom>
-    </S.HotItem>
-  ));
+  const setLatestProducts = async () => {
+    try {
+      const list = (await getLatestProducts()).data;
+      setLatestProductList(list);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  const recentlyItemList = recentlyItem.map((_, index) => (
-    <S.HotItem key={index}>
-      <S.ItemImg>
-        <img alt="productImg" src={testItem}/>
-      </S.ItemImg>
-      <S.ItemTitle>
-        2021년 햇꿀고구마 팝니다.
-      </S.ItemTitle>
-      <S.ItemDetailTop>
-        <div>전자기기</div>
-        <div>김진근</div>
-      </S.ItemDetailTop>
-      <S.ItemDetailBottom>
-        <S.ItemPrice>
-          700,000₩
-        </S.ItemPrice>
-        <S.Count>
-          <S.CountImg alt="productImg" src={count} />
-          16명
-        </S.Count>
-      </S.ItemDetailBottom>
-    </S.HotItem>
-  ));
+  useEffect(() => {
+    setPopularProducts();
+    setLatestProducts();
+  }, []);
+
+  const hotItemListRender = hotProductList.map((value) => {
+    return <ProductCard product={value} key={value.productId} />;
+  });
+
+  const recentlyItemList: JSX.Element[] = latestProductList.map((value) => {
+    return <ProductCard product={value} key={value.productId} />;
+  });
 
   return (
     <>
@@ -59,29 +44,17 @@ const Main = (): JSX.Element => {
         <S.Title>대마켓에 오신걸 환영합니다!</S.Title>
         <S.ItemContainer>
           <S.SmallHeader>
-            <S.SmallTitle>
-              인기있는 경매 물품
-            </S.SmallTitle>
-            <S.More>
-              더보기 
-            </S.More>
+            <S.SmallTitle>인기있는 경매 물품</S.SmallTitle>
+            <S.More>더보기 </S.More>
           </S.SmallHeader>
-          <S.HotItemList>
-            {hotItemList}
-          </S.HotItemList>
+          <S.HotItemList>{hotItemListRender}</S.HotItemList>
         </S.ItemContainer>
         <S.ItemContainer>
           <S.SmallHeader>
-            <S.SmallTitle>
-              최근 올라온 경매 물품
-            </S.SmallTitle>
-            <S.More>
-              더보기 
-            </S.More>
+            <S.SmallTitle>최근 올라온 경매 물품</S.SmallTitle>
+            <S.More>더보기 </S.More>
           </S.SmallHeader>
-          <S.HotItemList>
-            {recentlyItemList}
-          </S.HotItemList>
+          <S.HotItemList>{recentlyItemList}</S.HotItemList>
         </S.ItemContainer>
       </S.Container>
     </>
