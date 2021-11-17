@@ -7,26 +7,29 @@ interface PropsType {
 }
 
 const ProductCard = ({ product }: PropsType): JSX.Element => {
-  const { title, imageUrl, views, auctionPrice } = product;
+  const { title, imageUrl, views, auctionPrice, userName, category } = product;
   const price = auctionPrice.toLocaleString("ko-KR");
+
   return (
-    <S.HotItem>
-      <S.ItemImg>
-        <img alt="productImg" src={imageUrl} />
-      </S.ItemImg>
-      <S.ItemTitle>{title}</S.ItemTitle>
-      <S.ItemDetailTop>
-        <div>전자기기</div>
-        <div>김진근</div>
-      </S.ItemDetailTop>
-      <S.ItemDetailBottom>
-        <S.ItemPrice>{price}₩</S.ItemPrice>
-        <S.Count>
-          <S.CountImg alt="productImg" src={count} />
-          {views}명
-        </S.Count>
-      </S.ItemDetailBottom>
-    </S.HotItem>
+    <S.Container>
+      <S.HotItem>
+        <S.ItemImg>
+          <S.Img alt="productImg" src={imageUrl} />
+        </S.ItemImg>
+        <S.ItemTitle>{title}</S.ItemTitle>
+        <S.ItemDetailTop>
+          <div>{category}</div>
+          <div>{userName}</div>
+        </S.ItemDetailTop>
+        <S.ItemDetailBottom>
+          <S.ItemPrice>{price}₩</S.ItemPrice>
+          <S.Count>
+            <S.CountImg alt="productImg" src={count} />
+            {views}명
+          </S.Count>
+        </S.ItemDetailBottom>
+      </S.HotItem>
+    </S.Container>
   );
 };
 
