@@ -1,5 +1,10 @@
 import styled from "@emotion/styled";
 
+export const Container = styled.div`
+  width: 100%;
+  cursor: pointer;
+`;
+
 export const HotItem = styled.div`
   margin-bottom: 30px;
 `;
@@ -7,6 +12,14 @@ export const HotItem = styled.div`
 export const ItemImg = styled.div`
   width: 100%;
   margin-bottom: 12px;
+`;
+
+export const Img = styled.img`
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  border-radius: 5px;
+  object-position: center;
+  object-fit: cover;
 `;
 
 export const ItemTitle = styled.div`
