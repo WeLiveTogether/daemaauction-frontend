@@ -10,3 +10,12 @@ export const getPopularProducts = async () => {
     return Promise.reject(error);
   }
 };
+
+export const getLatestProducts = async () => {
+  const request = getRequest(DEAMA_AUCTION);
+  try {
+    return await request.get<productListResponse>(uri.productLatest);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
