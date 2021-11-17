@@ -12,7 +12,7 @@ const ProductCard = ({ product }: PropsType): JSX.Element => {
 
   return (
     <S.Container>
-      <S.HotItem>
+      <div>
         <S.ItemImg>
           <S.Img alt="productImg" src={imageUrl} />
         </S.ItemImg>
@@ -28,7 +28,7 @@ const ProductCard = ({ product }: PropsType): JSX.Element => {
             {views}명
           </S.Count>
         </S.ItemDetailBottom>
-      </S.HotItem>
+      </div>
     </S.Container>
   );
 };
