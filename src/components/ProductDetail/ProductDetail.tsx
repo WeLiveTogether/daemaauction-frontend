@@ -15,6 +15,13 @@ const ProductDetail = (): JSX.Element => {
       <S.ImageContainer>
         <Slider items={imgList} />
       </S.ImageContainer>
+      <S.TitleContainer>
+        <S.TitleInner>
+          <S.Title>삼성노트북 I7 15.6인치 게임용노트북 사무용노트북</S.Title>
+          <S.Gray>전자기기</S.Gray>
+        </S.TitleInner>
+        <S.Gray>김진근</S.Gray>
+      </S.TitleContainer>
     </S.Container>
   );
 };
