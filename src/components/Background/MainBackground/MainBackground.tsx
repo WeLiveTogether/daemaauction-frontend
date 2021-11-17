@@ -10,26 +10,9 @@ const Background = ({ children }: PropType): JSX.Element => {
   const containerRef = useRef<HTMLDivElement>(null);
   const backgroundContainerRef = useRef<HTMLDivElement>(null);
 
-  // const getHeight = () => {
-  //   const { current: container } = containerRef;
-  //   const { current: backgroundContainer } = backgroundContainerRef;
-
-  //   if (container && backgroundContainer) {
-  //     backgroundContainer.style.height = `${document.body.clientHeight}px`;
-  //   }
-
-  //   return document.body.clientHeight;
-  // };
-
-  // window.onload = getHeight;
-
-  // useEffect(() => {
-  //   getHeight();
-  // }, [children]);
-
   const onScroll = () => {
     if (backgroundContainerRef.current) {
-      backgroundContainerRef.current.style.transform = `translateY(-${window.scrollY}px)`;
+      backgroundContainerRef.current.style.transform = `translateY(-${window.scrollY * 0.1}px)`;
     }
   };
 
