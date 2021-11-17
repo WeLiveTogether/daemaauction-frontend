@@ -1,12 +1,19 @@
+import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
+import { color } from "../../styles/color";
 
-export const Container = styled.div`
+export const Container = styled.button`
   width: 100%;
   cursor: pointer;
-`;
-
-export const HotItem = styled.div`
-  margin-bottom: 30px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background-color: transparent;
+  text-align: left;
+  &:active {
+    background-color: ${color.black}30;
+  }
 `;
 
 export const ItemImg = styled.div`
