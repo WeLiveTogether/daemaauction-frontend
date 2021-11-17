@@ -56,7 +56,6 @@ const refresh = async (config: AxiosRequestConfig) => {
   }
 
   config.headers["Authorization"] = `Bearer ${accessToken}`;
-
   return config;
 };
 
