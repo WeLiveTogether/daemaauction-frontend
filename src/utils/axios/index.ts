@@ -2,9 +2,12 @@ import axios, { AxiosError, AxiosRequestConfig } from "axios";
 import uri from "../../constance/uri";
 import refreshTokenResponse from "../../models/dto/response/refreshTokenResponse";
 
+axios.defaults.withCredentials = true;
+
 const instance = axios.create({
   baseURL: "https://daemaauction.herokuapp.com",
   timeout: 500000,
+  withCredentials: true,
 });
 
 export const DEAMA_AUCTION = "https://daemaauction.herokuapp.com";
@@ -36,7 +39,11 @@ const refresh = async (config: AxiosRequestConfig) => {
   if (expireDate.getTime() < new Date().getTime()) {
     //토큰이 만료됨
     try {
-      const { access_token } = (await axios.get<refreshTokenResponse>(uri.refresh)).data.body;
+      const request = axios.create({
+        baseURL: DEAMA_AUCTION,
+        withCredentials: true,
+      });
+      const { access_token } = (await request.get<refreshTokenResponse>(uri.refresh)).data.body;
 
       localStorage.setItem("access_token", access_token);
       localStorage.setItem("expire_at", addMinutes(new Date(), EXPIRE_MINUTE).toString());
@@ -49,7 +56,6 @@ const refresh = async (config: AxiosRequestConfig) => {
   }
 
   config.headers["Authorization"] = `Bearer ${accessToken}`;
-
   return config;
 };
 

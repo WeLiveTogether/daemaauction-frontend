@@ -5,7 +5,6 @@ import * as S from "./styled";
 const Google = () => {
   const { host, protocol } = window.location;
   const login = `https://daemaauction.herokuapp.com/oauth2/authorization/google?redirect_uri=${protocol}//${host}/login/success`;
-  console.log(login);
   
   return (
     <S.GoogleLogin>
