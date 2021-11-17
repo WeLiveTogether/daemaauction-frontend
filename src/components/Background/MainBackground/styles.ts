@@ -7,6 +7,7 @@ import {
   rightBottomGreen,
   leftBottomYellow,
 } from "../../../assets/index";
+import { color } from "../../../styles/color";
 
 export const BackgroundContainer = styled.div`
   position: fixed;
@@ -15,6 +16,7 @@ export const BackgroundContainer = styled.div`
   overflow: hidden;
   z-index: -10;
   top: 0px;
+  background-color: ${color.background};
 `;
 
 export const BackgroundInner = styled.div`
