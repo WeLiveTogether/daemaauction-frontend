@@ -90,3 +90,12 @@ export const TimeContainer = styled.div`
   display: flex;
   align-items: center;
 `;
+
+export const Content = styled.div`
+  margin-top: 34px;
+  margin-bottom: 48px;
+  font: ${font.body3};
+  color: ${color.black};
+  width: 100%;
+`;
+
