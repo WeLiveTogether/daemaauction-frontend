@@ -32,12 +32,12 @@ const ProductDetail = (): JSX.Element => {
             <S.GrayMid>/ 350,000₩</S.GrayMid>
           </S.MoneyContainer>
           <S.UserContainer>
-            <img src={User} />
+            <img src={User} alt="user" />
             <div>16명</div>
           </S.UserContainer>
         </S.DetailContainer>
         <S.TimeContainer>
-          <img src={Time} />
+          <img src={Time} alt="time" />
           <div>11분 59초</div>
         </S.TimeContainer>
       </S.HeaderContainer>
