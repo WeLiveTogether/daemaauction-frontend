@@ -7,11 +7,13 @@ export interface ProductDetail {
   auctionPrice: number;
   categoryName: string;
   content: string;
-  createDate: string;
   email: string;
+  endDate: string;
+  imageUrl: null;
   immePrice: number;
   productImages: Image[];
   profileImageUrl: string;
+  saleStatus: null;
   subCategoryName: string;
   title: string;
   username: string;
