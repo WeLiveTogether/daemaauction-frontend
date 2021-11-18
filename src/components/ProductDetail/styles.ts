@@ -37,17 +37,22 @@ export const TitleContainer = styled.div`
 export const TitleInner = styled.div`
   display: flex;
   align-items: baseline;
+  max-width: 90%;
 `;
 
 export const Title = styled.div`
   font: ${font.headline3};
   color: ${color.black};
+  overflow: hidden;
+  word-wrap: break-word;
   margin-right: 12px;
 `;
 
 export const Gray = styled.div`
   font: ${font.body3};
   color: ${color.darkGray};
+  word-break: keep-all;
+  align-self: flex-end;
 `;
 
 export const DetailContainer = styled.div`
@@ -97,6 +102,8 @@ export const Content = styled.div`
   font: ${font.body3};
   color: ${color.black};
   width: 100%;
+  overflow: hidden;
+  word-wrap: break-word;
 `;
 
 export const ButtonContainer = styled.div`

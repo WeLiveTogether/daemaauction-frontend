@@ -37,7 +37,6 @@ const Slider = ({ items }: PropsType): JSX.Element => {
 
   useLayoutEffect(() => {
     const itemWidth = container.current?.clientWidth!;
-    console.log(itemWidth);
 
     list.current!.style.width = `${itemWidth * size + (size - 1) * gap}px`;
   }, [items]);

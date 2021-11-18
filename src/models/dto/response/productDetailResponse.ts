@@ -3,9 +3,9 @@ export interface Image {
   url: string;
 }
 
-export default interface productDetailResponse {
+export interface ProductDetail {
   auctionPrice: number;
-  categoryName: "도서";
+  categoryName: string;
   content: string;
   createDate: string;
   email: string;
@@ -17,3 +17,6 @@ export default interface productDetailResponse {
   username: string;
   views: number;
 }
+
+type productDetailResponse = ProductDetail[];
+export default productDetailResponse;
