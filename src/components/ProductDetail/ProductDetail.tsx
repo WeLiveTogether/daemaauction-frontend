@@ -1,5 +1,4 @@
 import * as S from "./styles";
-import defaultImg from "../../assets/images/testItem.svg";
 import Slider from "../Slider/Slider";
 import User from "../../assets/icons/count.svg";
 import Time from "../../assets/icons/time.svg";
@@ -9,6 +8,7 @@ import { ProductDetail as ProductDetailType } from "../../models/dto/response/pr
 import { useHistory, useParams } from "react-router";
 import { getProductDetail } from "../../utils/api/ProductDetail";
 import Timer from "./Timer/Timer";
+import ProductDetailSkeleton from "../ProductDetailSkeleton/ProductDetailSkeleton";
 
 const ProductDetail = (): JSX.Element => {
   const [product, setProduct] = useState<ProductDetailType | null>(null);
@@ -38,7 +38,7 @@ const ProductDetail = (): JSX.Element => {
 
   return (
     <>
-      {product && (
+      {product ? (
         <S.Container>
           <S.ImageContainer>
             <Slider
@@ -82,6 +82,8 @@ const ProductDetail = (): JSX.Element => {
             </S.Button>
           </S.ButtonContainer>
         </S.Container>
+      ) : (
+        <ProductDetailSkeleton />
       )}
     </>
   );

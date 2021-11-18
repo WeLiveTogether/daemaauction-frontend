@@ -18,13 +18,14 @@ const LoadingAnimation = keyframes`
   }
 `;
 
-export const Img = styled.div`
+export const Img = styled.div<{ delay: number }>`
   width: 100%;
   aspect-ratio: 4 / 3;
   margin-bottom: 12px;
   background-color: ${color.lightGray};
   border-radius: 5px;
   animation: ${LoadingAnimation} 2s 0s infinite linear alternate;
+  animation-delay: ${(props) => props.delay}s;
 `;
 
 export const Flex = styled.div`
@@ -33,11 +34,12 @@ export const Flex = styled.div`
   row-gap: 8px;
 `;
 
-export const Title = styled.div`
+export const Title = styled.div<{ delay: number }>`
   width: 70%;
   height: 24px;
   background-color: ${color.lightGray};
   animation: ${LoadingAnimation} 2s 0s infinite linear alternate;
+  animation-delay: ${(props) => props.delay}s;
 `;
 
 export const SubContainer = styled.div`
@@ -45,16 +47,18 @@ export const SubContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const Category = styled.div`
+export const Category = styled.div<{ delay: number }>`
   animation: ${LoadingAnimation} 2s 0s infinite linear alternate;
   background-color: ${color.lightGray};
   width: 20%;
   height: 24px;
+  animation-delay: ${(props) => props.delay}s;
 `;
 
-export const Name = styled.div`
+export const Name = styled.div<{ delay: number }>`
   animation: ${LoadingAnimation} 2s 0s infinite linear alternate;
   background-color: ${color.lightGray};
   width: 40%;
   height: 24px;
+  animation-delay: ${(props) => props.delay}s;
 `;
