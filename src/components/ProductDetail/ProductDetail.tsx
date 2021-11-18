@@ -49,9 +49,9 @@ const ProductDetail = (): JSX.Element => {
             <S.DetailContainer>
               <S.MoneyContainer>
                 <S.NowMoney>
-                  현재가 : {product.auctionPrice.toLocaleString("ko-kr")}₩ &nbsp;
+                  현재가 : {product.auctionPrice.toLocaleString("ko-KR")}₩ &nbsp;
                 </S.NowMoney>
-                <S.GrayMid>/ {product.immePrice}₩</S.GrayMid>
+                <S.GrayMid>/ {product.immePrice.toLocaleString("ko-KR")}₩</S.GrayMid>
               </S.MoneyContainer>
               <S.UserContainer>
                 <img src={User} alt="user" />
@@ -65,8 +65,12 @@ const ProductDetail = (): JSX.Element => {
           </S.HeaderContainer>
           <S.Content>{product.content}</S.Content>
           <S.ButtonContainer>
-            <S.Button color={color.green}>{product.auctionPrice}₩에 경매 참여</S.Button>
-            <S.Button color={color.yellow}>{product.immePrice}₩에 즉시 구매</S.Button>
+            <S.Button color={color.green}>
+              {product.auctionPrice.toLocaleString("ko-KR")}₩에 경매 참여
+            </S.Button>
+            <S.Button color={color.yellow}>
+              {product.immePrice.toLocaleString("ko-KR")}₩에 즉시 구매
+            </S.Button>
           </S.ButtonContainer>
         </S.Container>
       )}
