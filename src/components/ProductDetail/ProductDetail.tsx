@@ -69,7 +69,7 @@ const ProductDetail = (): JSX.Element => {
             </S.DetailContainer>
             <S.TimeContainer>
               <img src={Time} alt="time" />
-              <Timer to={new Date(product.createDate)} interval={500} />
+              <Timer to={new Date(product.endDate)} interval={500} />
             </S.TimeContainer>
           </S.HeaderContainer>
           <S.Content>{product.content}</S.Content>
