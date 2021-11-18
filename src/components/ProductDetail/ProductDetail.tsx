@@ -1,5 +1,4 @@
 import * as S from "./styles";
-import defaultImg from "../../assets/images/testItem.svg";
 import Slider from "../Slider/Slider";
 import User from "../../assets/icons/count.svg";
 import Time from "../../assets/icons/time.svg";
@@ -9,7 +8,6 @@ import { ProductDetail as ProductDetailType } from "../../models/dto/response/pr
 import { useHistory, useParams } from "react-router";
 import { getProductDetail } from "../../utils/api/ProductDetail";
 import Timer from "./Timer/Timer";
-import ProductCardSkeleton from "../ProductCardSkeleton/ProductCardSkeleton";
 import ProductDetailSkeleton from "../ProductDetailSkeleton/ProductDetailSkeleton";
 
 const ProductDetail = (): JSX.Element => {
