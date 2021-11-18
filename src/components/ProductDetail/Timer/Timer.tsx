@@ -14,8 +14,8 @@ const Timer = ({ to, interval }: PropsType): JSX.Element => {
     const second = date.getSeconds();
 
     const hourString = hour > 0 ? `${hour}시 ` : "";
-    const minuteString = minute > 0 ? `${minute}분 ` : "";
-    const secondString = second > 0 ? `${second}초` : "";
+    const minuteString = `${minute.toString().padStart(2, "0")}분 `;
+    const secondString = `${second.toString().padStart(2, "0")}초`;
 
     return `${hourString}${minuteString}${secondString}`;
   };
@@ -23,10 +23,7 @@ const Timer = ({ to, interval }: PropsType): JSX.Element => {
   useLayoutEffect(() => {
     let timeout;
     (timeout = () => {
-      console.log(to);
-
       const diff = new Date(new Date(to).getTime() - new Date().getTime());
-      console.log(diff);
 
       setTimeString(dateToString(diff));
     })();
