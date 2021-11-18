@@ -6,20 +6,29 @@ import Time from "../../assets/icons/time.svg";
 import { color } from "../../styles/color";
 import { useEffect, useState } from "react";
 import { ProductDetail as ProductDetailType } from "../../models/dto/response/productDetailResponse";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { getProductDetail } from "../../utils/api/ProductDetail";
 import Timer from "./Timer/Timer";
 
 const ProductDetail = (): JSX.Element => {
   const [product, setProduct] = useState<ProductDetailType | null>(null);
   const { id } = useParams<{ id: string }>();
+  const { push } = useHistory();
 
   const settingProduct = async () => {
     try {
       const response = await getProductDetail(Number(id));
+
+      if (response.data.length <= 0) {
+        alert("존재하지 않는 게시물입니다.");
+        push("/");
+        return;
+      }
+
       setProduct({ ...response.data[0] });
     } catch (error) {
       console.log(error);
+      push("/");
     }
   };
 
