@@ -8,6 +8,7 @@ import {
   RecentContaier,
   ChatContainer,
   LoginSuccessContainer,
+  WritingContainer,
 } from "../container";
 
 const MainRouter: FC = (): JSX.Element => {
@@ -21,6 +22,7 @@ const MainRouter: FC = (): JSX.Element => {
         <Route exact path="/recent" component={RecentContaier} />
         <Route exact path="/chat" component={ChatContainer} />
         <Route exact path="/login/success" component={LoginSuccessContainer} />
+        <Route exact path="/writing" component={WritingContainer} />
       </Switch>
     </>
   );
