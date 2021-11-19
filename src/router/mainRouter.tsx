@@ -9,6 +9,7 @@ import {
   ChatContainer,
   LoginSuccessContainer,
   WritingContainer,
+  ProductDetailContainer,
 } from "../container";
 
 const MainRouter: FC = (): JSX.Element => {
@@ -23,6 +24,7 @@ const MainRouter: FC = (): JSX.Element => {
         <Route exact path="/chat" component={ChatContainer} />
         <Route exact path="/login/success" component={LoginSuccessContainer} />
         <Route exact path="/writing" component={WritingContainer} />
+        <Route exact path="/product/:id" component={ProductDetailContainer} />
       </Switch>
     </>
   );

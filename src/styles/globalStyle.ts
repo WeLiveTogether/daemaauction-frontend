@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { color } from "./color";
 
 export const reset = css`
   html,
@@ -93,8 +94,8 @@ export const reset = css`
     font-smooth: antialiased;
     -webkit-font-smoothing: antialiased;
   }
-  body{
-    background-color: #F7FbFE;
+  body {
+    background-color: ${color.background};
   }
   /* HTML5 display-role reset for older browsers */
   article,
