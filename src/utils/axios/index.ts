@@ -20,6 +20,7 @@ const addMinutes = (date: Date, minutes: number) => {
 };
 
 const refresh = async (config: AxiosRequestConfig) => {
+  config.withCredentials = true;
   if (config.baseURL === DHRTUSEOAK) {
     //token이 필요없기 떄문에 바로 request 함
     return config;
@@ -43,14 +44,19 @@ const refresh = async (config: AxiosRequestConfig) => {
         baseURL: DEAMA_AUCTION,
         withCredentials: true,
       });
-      const { access_token } = (await request.get<refreshTokenResponse>(uri.refresh)).data.body;
+
+      const { access_token } = (
+        await request.get<refreshTokenResponse>(uri.refresh, {
+          withCredentials: true,
+        })
+      ).data.body;
 
       localStorage.setItem("access_token", access_token);
       localStorage.setItem("expire_at", addMinutes(new Date(), EXPIRE_MINUTE).toString());
       accessToken = access_token;
     } catch (error) {
       //리프레시 실패(리스레시 토큰 만료)
-      window.location.href = "/login";
+      // window.location.href = "/login";
       return config;
     }
   }
