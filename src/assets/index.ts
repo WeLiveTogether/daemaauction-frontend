@@ -17,3 +17,4 @@ export { default as count } from "./icons/count.svg";
 export { default as defaultProfile } from "./images/defaultProfile.svg";
 export { default as leftChevron } from "./icons/leftChevron.svg";
 export { default as rightChevron } from "./icons/rightChevron.svg";
+export { default as Sell } from './headerImg/Sell.svg'

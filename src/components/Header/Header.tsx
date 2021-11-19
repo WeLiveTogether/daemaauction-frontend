@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./style";
-import { HeaderLogo, Chatting, Person } from "../../assets";
+import { HeaderLogo, Chatting, Person, Sell } from "../../assets";
 import { Link, useHistory } from "react-router-dom";
 import Nav from "./Nav";
 const Header = (): JSX.Element => {
@@ -24,10 +24,17 @@ const Header = (): JSX.Element => {
         </Link>
         <Nav />
       </nav>
-      <S.Chatting to="/chat">
-        <img src={Chatting} alt="" />
-        <span>채팅</span>
-      </S.Chatting>
+      <div>
+        <S.Chatting to="/writing">
+          <img src={Sell} alt="" />
+          <span>판매</span>
+        </S.Chatting>
+        <S.Chatting to="/chat">
+          <img src={Chatting} alt="" />
+          <span>채팅</span>
+        </S.Chatting>
+      </div>
+
       <S.UserInfo>
         <S.MyProfile>
           <S.ProfileCircle />
