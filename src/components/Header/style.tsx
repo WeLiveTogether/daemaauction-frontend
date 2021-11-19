@@ -42,7 +42,11 @@ export const MyProfile = styled.div`
     height: 20px;
   }
 `;
-export const Chatting = styled(Link)``;
+export const Chatting = styled(Link)`
+  & span {
+    margin-right: 15px;
+  }
+`;
 
 export const NavWrapper = styled.div`
   height: 100%;
