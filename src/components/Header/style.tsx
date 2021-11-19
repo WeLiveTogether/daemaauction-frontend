@@ -53,7 +53,7 @@ export const NavWrapper = styled.div`
     z-index: 2;
   }
 `;
-export const NavItem = styled.div`
+export const NavItem = styled(Link)`
   line-height: 65px;
   text-align: center;
   width: 120px;
@@ -82,6 +82,9 @@ export const LogoutBtn = styled.button`
   border: 1px solid ${color.black};
   background: none;
   border-radius: 20px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 export const UserInfo = styled.div`
   width: 200px;
