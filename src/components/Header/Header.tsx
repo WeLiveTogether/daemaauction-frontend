@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./style";
 import { HeaderLogo, Chatting, Person, Sell } from "../../assets";
 import { Link, useHistory } from "react-router-dom";
 import Nav from "./Nav";
+import { getUserInfo } from "../../utils/api/Mypage/index";
 const Header = (): JSX.Element => {
   const history = useHistory();
+  const [userName, setUserName] = useState<string>("");
+  const setUserInformationFunc = async () => {
+    const userInfo = await getUserInfo();
+    setUserName(userInfo?.data?.body?.user?.username);
+  };
+  useEffect(() => {
+    setUserInformationFunc();
+  }, []);
   const logoutBtn = (event: React.MouseEvent<HTMLElement>) => {
     localStorage.removeItem("access_token");
     localStorage.removeItem("expire_at");
@@ -38,7 +47,7 @@ const Header = (): JSX.Element => {
       <S.UserInfo>
         <S.MyProfile>
           <S.ProfileCircle />
-          <span>김진근</span>
+          <span>{userName}</span>
         </S.MyProfile>
 
         <S.LogoutBtn onClick={logoutBtn}>로그아웃</S.LogoutBtn>
