@@ -9,18 +9,6 @@ export const Container = styled.div`
   background-color: #f7fbfe;
 `;
 
-export const ChatRoomContainer = styled.div`
-  width: 20%;
-  height: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  row-gap: 12px;
-  overflow: auto;
-  overflow-x: hidden;
-  padding: 0px 16px 16px 16px;
-`;
-
 export const Line = styled.div`
   width: 1px;
   background-color: #8395a7;
