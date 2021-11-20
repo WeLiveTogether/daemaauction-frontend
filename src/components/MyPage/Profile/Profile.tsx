@@ -1,14 +1,23 @@
 import * as S from "./styles";
 import { defaultProfile } from "../../../assets";
+import { getUserInfo } from "../../../utils/api/Mypage";
+import { useEffect, useState } from "react";
 const Profile = (): JSX.Element => {
+  const [userName, setUserName] = useState<string>("");
+  const setUserInformationFunc = async () => {
+    const userInfo = await getUserInfo();
+    setUserName(userInfo?.data?.body?.user?.username);
+  };
+  useEffect(() => {
+    setUserInformationFunc();
+  }, []);
   return (
     <>
       <S.ProfileContainer>
         <S.ProfileImg alt="profile" src={defaultProfile} />
         <S.ProfileInfo>
           <S.ProfileInfoTop>
-            <S.UserName>김진근</S.UserName>
-            <S.UserNumber>2105</S.UserNumber>
+            <S.UserName>{userName}</S.UserName>
           </S.ProfileInfoTop>
           <S.ItemCountContainer>
             <div>판매한 물품&nbsp;</div>

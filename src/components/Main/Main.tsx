@@ -6,7 +6,8 @@ import ProductCard from "../ProductCard/ProductCard";
 import ProductCardSkeleton from "../ProductCardSkeleton/ProductCardSkeleton";
 const Main = (): JSX.Element => {
   const [hotProductList, setHotProductList] = useState<productListResponse>([]);
-  const [latestProductList, setLatestProductList] = useState<productListResponse>([]);
+  const [latestProductList, setLatestProductList] =
+    useState<productListResponse>([]);
   const [isPopularLoading, setIsPopularLoading] = useState<boolean>(false);
   const [isLatestLoading, setIsLatestLoading] = useState<boolean>(false);
 
@@ -60,14 +61,18 @@ const Main = (): JSX.Element => {
             <S.SmallTitle>인기있는 경매 물품</S.SmallTitle>
             <S.StyledLink to="/">더보기 </S.StyledLink>
           </S.SmallHeader>
-          <S.HotItemList>{isPopularLoading ? skeletons : hotItemListRender}</S.HotItemList>
+          <S.HotItemList>
+            {isPopularLoading ? skeletons : hotItemListRender}
+          </S.HotItemList>
         </S.ItemContainer>
         <S.ItemContainer>
           <S.SmallHeader>
             <S.SmallTitle>최근 올라온 경매 물품</S.SmallTitle>
             <S.StyledLink to="/">더보기 </S.StyledLink>
           </S.SmallHeader>
-          <S.HotItemList>{isLatestLoading ? skeletons : recentlyItemList} </S.HotItemList>
+          <S.HotItemList>
+            {isLatestLoading ? skeletons : recentlyItemList}{" "}
+          </S.HotItemList>
         </S.ItemContainer>
       </S.Container>
     </>
