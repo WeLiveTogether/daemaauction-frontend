@@ -5,6 +5,7 @@ import Chatting from "./component/Chatting/Chatting";
 import { io, Socket } from "socket.io-client";
 import { getMyInfo } from "../../utils/api/My";
 import { User } from "../../models/dto/response/myInfoResponse";
+import ChatRoomSkeleton from "./component/ChatRoomList/ChatRoomSkeleton/ChatRoomSkeleton";
 
 interface MsgRes {
   msg: "string";
@@ -15,7 +16,7 @@ interface MsgRes {
 const Chat = (): JSX.Element => {
   const [socket, setSocket] = useState<Socket | null>(null);
 
-  const [userId, setUserId] = useState<string | null>("114078373485403033186");
+  const [userId, setUserId] = useState<string | null>(null);
 
   const setMyInfo = async () => {
     try {
@@ -29,7 +30,7 @@ const Chat = (): JSX.Element => {
   };
 
   useLayoutEffect(() => {
-    // setMyInfo();
+    setMyInfo();
     const socket = io("http://192.168.137.198:3000", {
       transports: ["websocket"],
     });
@@ -44,8 +45,10 @@ const Chat = (): JSX.Element => {
       <S.Container>
         {socket && (
           <>
-            {userId && (
+            {userId ? (
               <ChatRoomList socket={socket} roomIdState={[roomId, setRoomId]} userId={userId} />
+            ) : (
+              <ChatRoomSkeleton />
             )}
             <S.Line />
             <S.ChatContainer>
