@@ -56,4 +56,6 @@ export const ItemNone = styled.div`
   justify-content: center;
   font: ${font.subtitle};
   color: ${color.black};
+  background-color: ${color.lightGray};
+  border-radius: 5px;
 `;
