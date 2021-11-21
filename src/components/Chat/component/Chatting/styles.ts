@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import { color } from "../../../../styles/color";
+import { font } from "../../../../styles/font";
 
 export const ChattingContiner = styled.div`
   background-color: #ffffff;
@@ -33,12 +35,10 @@ export const TitleContaienr = styled.div`
 `;
 
 export const Bold = styled.div`
-  font-size: 16px;
-  font-weight: bold;
+  font: ${font.body1};
 `;
 export const Description = styled.div`
-  font-size: 14px;
-  font-weight: 400;
+  font: ${font.description};
 `;
 
 export const ChatContentContainer = styled.div`
@@ -68,15 +68,14 @@ export const ChatInputContainer = styled.div`
 export const Input = styled.input`
   outline: none;
   border: 0;
-  font-size: 16px;
-  font-weight: 300;
+  font: ${font.body3};
   background-color: #f7fbfe;
   width: 100%;
   height: 100%;
   padding: 0;
   margin: 8px 16px 8px 16px;
   ::placeholder {
-    color: #8395a7;
+    color: ${color.gray};
   }
 `;
 

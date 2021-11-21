@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { color } from "../../../../styles/color";
 
 export const Container = styled.div`
   width: 100%;
@@ -12,6 +13,6 @@ export const ContentContainer = styled.div`
   word-wrap: break-word;
   word-break: break-all;
   border-radius: 5px;
-  background-color: #1cd0a1;
-  color: #fff;
+  background-color: ${color.green};
+  color: ${color.white};
 `;
