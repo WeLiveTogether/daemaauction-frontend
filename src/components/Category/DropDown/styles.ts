@@ -5,6 +5,8 @@ export const InnerItemList = styled.div<{ display: string }>`
   margin-top: 6px;
   display: ${(props) => props.display};
   color: ${color.black};
+  position: absolute;
+  z-index: 100;
 `;
 
 export const InnerItem = styled.div`
@@ -14,6 +16,7 @@ export const InnerItem = styled.div`
   display: flex;
   align-items: center;
   column-gap: 4px;
+  word-break: keep-all;
   :hover {
     div:first-child {
       background-color: ${color.white};

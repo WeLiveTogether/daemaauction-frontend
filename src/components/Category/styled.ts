@@ -21,6 +21,7 @@ export const Category = styled.div`
   margin-top: 10px;
   gap: 16px;
   font: ${font.body3};
+  position: relative;
 `;
 
 export const CategoryBox = styled.div`
