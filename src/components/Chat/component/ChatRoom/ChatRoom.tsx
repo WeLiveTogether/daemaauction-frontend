@@ -14,14 +14,16 @@ const ChatRoom = ({ active, roomIdState, data }: PropsType): JSX.Element => {
   const [roomId, setRoomId] = roomIdState;
   const [productName, setProductName] = useState<string>("");
   const { username } = data.user;
+  const { msgCnt } = data.room;
   const { id } = data;
+
   const onClickHandler = () => {
     setRoomId(id);
   };
 
   const getProductName = async () => {
     try {
-      const response = await getProductDetail(Number(id));
+      const response = await getProductDetail(msgCnt);
       setProductName(response.data[0].title);
     } catch (error) {}
   };
