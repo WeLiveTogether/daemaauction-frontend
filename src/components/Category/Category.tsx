@@ -1,26 +1,32 @@
 import { useEffect, useState } from "react";
 import { Select } from "../../assets";
 import { NavArr, optionArr } from "../Header/Nav";
+import DropDown from "./DropDown/DropDown";
 import * as S from "./styled";
+const bigCategorys = ["의류", "전자기기", "음식", "도서", "생활용품", "완구/취미"];
+const subCategorys = new Map<string, string[]>()
+  .set(bigCategorys[0], ["상의", "하의", "액세서리", "신발", "성별"])
+  .set(bigCategorys[1], ["생활", "컴퓨터/노트북", "주변기기"])
+  .set(bigCategorys[2], ["기프티콘", "과자/젤리/빵", "음료"])
+  .set(bigCategorys[3], ["전공도서", "교양도서"])
+  .set(bigCategorys[4], ["세탁용품", "욕실용품", "청소용품", "책상/진열대/수납"])
+  .set(bigCategorys[5], ["악기", "장난감", "보드게임/카드", "기타용품"]);
 
 const Category = () => {
-  const [isActive, setIsActive] = useState<boolean>(false);
-  const [bigCategory, setBigCategory] = useState<string>("");
+  const [isBigActive, setIsBigActive] = useState<boolean>(false);
+  const [isSubActive, setIsSubActive] = useState<boolean>(false);
+  const [bigIndex, setBigIndex] = useState<number>(0);
+  const [subIndex, setSubIndex] = useState<number>(0);
 
-  useEffect(() => {
-    setBigCategory(NavArr[0]);
-  }, []);
-
-  const activeChevron = () => {
-    setIsActive(!isActive);
-    if (isActive) {
-    } else {
-    }
+  const changeBigCategory = (index: number) => {
+    setIsBigActive(false);
+    setBigIndex(index);
+    setSubIndex(0);
   };
 
-  const changeBigCategory = (text: string) => {
-    setBigCategory(text);
-    setIsActive(false);
+  const changeSubCategory = (index: number) => {
+    setIsSubActive(false);
+    setSubIndex(index);
   };
 
   return (
@@ -28,67 +34,35 @@ const Category = () => {
       <S.CategoryContainer>
         <S.Title>카테고리</S.Title>
         <S.Category>
-          {/* 맵으로 두개를 만들어볼까 생각해서 둔거 */}
-          {/* {NavArr.map(() => {
-            return (
-              <S.CategoryBox onClick={() => {activeChevron()}}>
-              <div>대분류 :&nbsp;&nbsp;</div>
-              <div>{}</div>&nbsp;
-              <S.Chevron
-                src={Select}
-                alt="chevron"
-                rotate={isActive ? 180 : 360}
-              />
-            </S.CategoryBox>
-            )
-          })} */}
-
           <div>
-            <S.CategoryBox
-              onClick={() => {
-                activeChevron();
-              }}
-            >
+            <S.CategoryBox onClick={() => setIsBigActive(!isBigActive)}>
               <div>대분류 :&nbsp;&nbsp;</div>
               <S.CategoryRight>
-                <div>{bigCategory}</div>&nbsp;
-                <S.Chevron
-                  src={Select}
-                  alt="chevron"
-                  rotate={isActive ? 180 : 360}
-                />
+                <div>{bigCategorys[bigIndex]}</div>&nbsp;
+                <S.Chevron src={Select} alt="chevron" rotate={isBigActive ? 180 : 360} />
               </S.CategoryRight>
             </S.CategoryBox>
-            <S.InnerItemList display={isActive ? "block" : "none"}>
-              {NavArr.map((value, i) => {
-                return (
-                  <S.InnerItem key={i} onClick={() => changeBigCategory(value)}>
-                    {value}
-                  </S.InnerItem>
-                );
-              })}
-            </S.InnerItemList>
+            <DropDown
+              array={bigCategorys}
+              selected={bigIndex}
+              isActive={isBigActive}
+              setSelected={(index: number) => changeBigCategory(index)}
+            />
           </div>
 
-          {/* 서브 카테고리 */}
-          {/* <div>
-            <S.CategoryBox
-              onClick={() => {
-                activeChevron();
-              }}
-            >
+          <div>
+            <S.CategoryBox onClick={() => setIsSubActive(!isSubActive)}>
               <div>소분류 :&nbsp;&nbsp;</div>
-              <div>상의</div>&nbsp;
-              <S.Chevron
-                src={Select}
-                alt="chevron"
-                rotate={isActive ? 180 : 360}
-              />
+              <div>{subCategorys.get(bigCategorys[bigIndex])![subIndex]}</div>&nbsp;
+              <S.Chevron src={Select} alt="chevron" rotate={isSubActive ? 180 : 360} />
             </S.CategoryBox>
-            <S.InnerItemList display={isActive ? "block" : "none"}>
-              <div>123</div>
-            </S.InnerItemList>
-          </div> */}
+            <DropDown
+              array={subCategorys.get(bigCategorys[bigIndex])!}
+              selected={subIndex}
+              isActive={isSubActive}
+              setSelected={(index: number) => changeSubCategory(index)}
+            />
+          </div>
         </S.Category>
       </S.CategoryContainer>
 
