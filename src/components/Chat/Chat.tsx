@@ -39,7 +39,7 @@ const Chat = (): JSX.Element => {
     setSocket(socket);
   }, []);
 
-  const [roomId, setRoomId] = useState<string | null>("5");
+  const [roomId, setRoomId] = useState<string | null>(null);
 
   return (
     <>
