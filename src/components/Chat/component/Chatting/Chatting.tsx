@@ -33,6 +33,7 @@ const Chatting = ({ socket, roomId, userId, userName }: PropsType) => {
   const [content, setContent] = useState<string>("");
 
   useLayoutEffect(() => {
+    setMessages(null);
     socket.emit("joinRoom", roomId);
 
     socket.on("chatMsgList", (data: PrevMsg[]) => {
@@ -53,14 +54,14 @@ const Chatting = ({ socket, roomId, userId, userName }: PropsType) => {
     });
 
     socket.emit("msgList", roomId);
-  }, []);
+  }, [roomId]);
 
   useLayoutEffect(() => {
     socket.on("msgToClient", (data: Msg) => {
       console.log(data);
       if (messages) setMessages(messages.concat(data));
     });
-  }, [messages]);
+  }, [messages, roomId]);
 
   const renderMessage = (messages || []).map((value, index, array) => {
     const { msg, senderName } = value;
