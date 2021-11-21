@@ -47,3 +47,13 @@ export const ItemContainer = styled.div`
   column-gap: 30px;
   row-gap: 30px;
 `;
+
+export const ItemNone = styled.div`
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: ${font.subtitle};
+  color: ${color.black};
+`;

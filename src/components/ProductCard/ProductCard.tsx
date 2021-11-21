@@ -8,15 +8,19 @@ interface PropsType {
 }
 
 const ProductCard = ({ product }: PropsType): JSX.Element => {
-  const { title, imageUrl, views, auctionPrice, userName, category, productId } = product;
+  const { title, imageUrl, views, auctionPrice, userName, category, productId, saleStatus } =
+    product;
+  console.log(saleStatus);
+
   const price = auctionPrice.toLocaleString("ko-KR");
   const { push } = useHistory();
   return (
     <S.Container
       onClick={() => {
-        push(`/product/${productId}`);
+        if (product.saleStatus !== "SOLD_OUT") push(`/product/${productId}`);
       }}
     >
+      {saleStatus === "SOLD_OUT" && <S.Cover>판매완료</S.Cover>}
       <div>
         <S.ItemImg>
           <S.Img alt="productImg" src={imageUrl} />

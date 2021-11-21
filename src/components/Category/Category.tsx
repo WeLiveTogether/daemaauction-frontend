@@ -27,7 +27,6 @@ const Category = ({ bigCategoryParam, subCategoryParam }: PropsType) => {
 
   const initBig = () => {
     const bigI = bigCategoryParam ? bigCategorys.indexOf(bigCategoryParam) : 0;
-    console.log(bigI);
 
     return bigI;
   };
@@ -37,7 +36,6 @@ const Category = ({ bigCategoryParam, subCategoryParam }: PropsType) => {
     const subList = subCategorys.get(bigCategorys[bigI]);
     const subI =
       bigCategoryParam && subCategoryParam && subList ? subList.indexOf(subCategoryParam) : 0;
-    console.log(subI);
     return subI;
   };
 
@@ -81,8 +79,9 @@ const Category = ({ bigCategoryParam, subCategoryParam }: PropsType) => {
             createDate: "",
             immePrice: 0,
             subCategory: "",
+            endDate: "",
+            saleStatus: "",
           };
-          console.log(data);
 
           return data;
         })
