@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import * as S from "./styles";
 import { optionArr } from "../Header/Nav";
 import { color } from "../../styles/color";
-import { postWriting } from "../../utils/api/Writing";
+import { postWriting, postImg } from "../../utils/api/Writing";
+import { useHistory } from "react-router";
 const mainCategory = [
   { value: 0, name: "의류" },
   { value: 0, name: "전자제품" },
@@ -12,9 +13,11 @@ const mainCategory = [
   { value: 0, name: "생활용품" },
   { value: 0, name: "완구/취미" },
 ];
-
+let fileFormData = new FormData();
 const Writing = () => {
   const [fileList, setFileList] = useState<FileList | null>();
+
+  const [imgConsole, setImgConsole] = useState("+ 사진추가");
   const addFileFunc = (e: React.ChangeEvent<HTMLInputElement>) => {
     const nowFile = e.target.files;
     if (!nowFile) return;
@@ -23,6 +26,10 @@ const Writing = () => {
       return;
     }
     setFileList(nowFile);
+    for (let i = 0; i < nowFile.length; i++) {
+      fileFormData.append("file", nowFile[i]);
+    }
+    setImgConsole("사진수정하기");
   };
   const renderImg = (): JSX.Element[] => {
     if (!fileList) return [];
@@ -82,34 +89,36 @@ const Writing = () => {
     };
     setInput(nextInput);
   };
-
+  const history = useHistory();
   //submit
-  const onClickSubmit = () => {
-    console.log({
-      auctionPrice: startauction,
-      category: mainCategory[aim].name,
-      content: description,
-      immePrice: nowbuy,
-      productSaleStatus: "ON_SALE",
-      subCategory: optionArr[aim][subaim],
-      title: title,
-    });
-    /*postWriting({
-      auctionPrice: startauction,
-      category: mainCategory[aim].name,
-      content: description,
-      immePrice: nowbuy,
-      productSaleStatus: "ON_SALE"
-      subCategory: optionArr[aim][subaim],
-      title : title
-    })*/
+  const onClickSubmit = async () => {
+    if (nowbuy === 0 || title === "" || description === "") {
+      alert("모든 사항을 입력해주세요");
+    } else if (!fileFormData) {
+      alert("사진이 없습니다.");
+    } else {
+      const getWritingResponse = await postWriting({
+        auctionPrice: startauction,
+        category: mainCategory[aim].name,
+        content: description,
+        immePrice: nowbuy,
+        productSaleStatus: "ON_SALE",
+        subCategory: optionArr[aim][subaim],
+        title: title,
+      });
+      fileFormData.set("productId", getWritingResponse.data.productId);
+      const getImg = postImg(fileFormData);
+      console.log(getImg);
+      alert("업로드가 완료되었습니다.");
+      history.push("/");
+    }
   };
   return (
     <S.Container>
       <S.Title>경매 글 작성</S.Title>
       <S.ImgWrapper>
         {renderImg()}
-        <S.AddImg htmlFor="getFile">+ 사진추가</S.AddImg>
+        <S.AddImg htmlFor="getFile">{imgConsole}</S.AddImg>
         <input
           type="file"
           id="getFile"

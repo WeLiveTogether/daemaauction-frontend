@@ -11,3 +11,14 @@ export const postWriting = async (data:postProductInfo) => {
         return Promise.reject(error);
     }
 }  
+
+export const postImg = async (file:FormData|null|undefined) =>{
+    const request = getRequest(DEAMA_AUCTION);
+    try{
+        const response= await request.post(`${uri.productImageUpload}`, file);
+        return response;
+    }
+    catch(error){
+        return Promise.reject(error);
+    }
+}
