@@ -99,10 +99,10 @@ const ProductDetail = (): JSX.Element => {
             </S.Button>
             <S.Button
               color={color.yellow}
-              onClick={() => {
+              onClick={async () => {
                 buyProductRightOff(id);
+                await createRoom(id);
                 alert("즉시 구매하였습니다.");
-                createRoom(id);
                 window.location.reload();
               }}
             >
