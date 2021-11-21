@@ -9,10 +9,12 @@ import { useHistory, useParams } from "react-router";
 import { getProductDetail } from "../../utils/api/ProductDetail";
 import Timer from "./Timer/Timer";
 import ProductDetailSkeleton from "../ProductDetailSkeleton/ProductDetailSkeleton";
+import { getMyInfo } from "../../utils/api/My";
 
 const ProductDetail = (): JSX.Element => {
   const [product, setProduct] = useState<ProductDetailType | null>(null);
   const { id } = useParams<{ id: string }>();
+  const [myId, setMyId] = useState<string>("");
   const { push } = useHistory();
 
   const settingProduct = async () => {
@@ -32,7 +34,15 @@ const ProductDetail = (): JSX.Element => {
     }
   };
 
+  const settingMyId = async () => {
+    try {
+      const response = await getMyInfo();
+      setMyId(response.data.body.user.userId);
+    } catch (error) {}
+  };
+
   useEffect(() => {
+    settingMyId();
     settingProduct();
   }, []);
 
@@ -73,14 +83,16 @@ const ProductDetail = (): JSX.Element => {
             </S.TimeContainer>
           </S.HeaderContainer>
           <S.Content>{product.content}</S.Content>
-          <S.ButtonContainer>
-            <S.Button color={color.green}>
-              {product.auctionPrice.toLocaleString("ko-KR")}₩에 경매 참여
-            </S.Button>
-            <S.Button color={color.yellow}>
-              {product.immePrice.toLocaleString("ko-KR")}₩에 즉시 구매
-            </S.Button>
-          </S.ButtonContainer>
+          {product.userId !== myId && (
+            <S.ButtonContainer>
+              <S.Button color={color.green}>
+                {product.auctionPrice.toLocaleString("ko-KR")}₩에 경매 참여
+              </S.Button>
+              <S.Button color={color.yellow}>
+                {product.immePrice.toLocaleString("ko-KR")}₩에 즉시 구매
+              </S.Button>
+            </S.ButtonContainer>
+          )}
         </S.Container>
       ) : (
         <ProductDetailSkeleton />
