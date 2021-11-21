@@ -3,6 +3,7 @@ import { Socket } from "socket.io-client";
 import ChatRoomType from "../../../../interfaces/ChatRoomType";
 import State from "../../../../interfaces/State";
 import ChatRoom from "../ChatRoom/ChatRoom";
+import ChatRoomSkeleton from "./ChatRoomSkeleton/ChatRoomSkeleton";
 import * as S from "./styles";
 
 interface PropsType {
@@ -27,16 +28,33 @@ const ChatRoomList = ({ socket, roomIdState, userId }: PropsType) => {
     socket.emit("chatRoomList", userId);
   }, []);
 
+  const renderChatRoom = () => {
+    if (!roomList) {
+      return;
+    }
+
+    if (roomList.length <= 0) {
+      return (
+        <>
+          <S.ChatRoomNone>채팅방이 없습니다.</S.ChatRoomNone>
+        </>
+      );
+    }
+
+    return roomList.map((value, index) => {
+      const { id } = value;
+      return <ChatRoom active={roomId === id} data={value} roomIdState={roomIdState} key={index} />;
+    });
+  };
+
   return (
-    <S.ChatRoomContainer>
-      {roomList &&
-        roomList.map((value, index) => {
-          const { id } = value;
-          return (
-            <ChatRoom active={roomId === id} data={value} roomIdState={roomIdState} key={index} />
-          );
-        })}
-    </S.ChatRoomContainer>
+    <>
+      {roomList ? (
+        <S.ChatRoomContainer>{roomList && renderChatRoom()}</S.ChatRoomContainer>
+      ) : (
+        <ChatRoomSkeleton />
+      )}
+    </>
   );
 };
 
