@@ -9,6 +9,8 @@ enum uri {
   users = "/api/users",
   productCategory = "/product/category",
   productSubCategory = "/product/subCategory",
+  attendProduct = "/api/attend-auction",
+  buyProduct = "/api/buy-product",
 }
 
 export default uri;

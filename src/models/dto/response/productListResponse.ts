@@ -10,6 +10,9 @@ export interface Product {
   title: string;
   userName: string;
   views: number;
+
+  endDate: string;
+  saleStatus: string;
 }
 
 type productListResponse = Product[];

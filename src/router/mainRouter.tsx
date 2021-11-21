@@ -11,6 +11,7 @@ import {
   LoginSuccessContainer,
   WritingContainer,
   ProductDetailContainer,
+  CategoryContainer,
 } from "../container";
 
 const MainRouter: FC = (): JSX.Element => {
@@ -26,6 +27,7 @@ const MainRouter: FC = (): JSX.Element => {
         <Route exact path="/login/success" component={LoginSuccessContainer} />
         <Route exact path="/writing" component={WritingContainer} />
         <Route exact path="/product/:id" component={ProductDetailContainer} />
+        <Route exact path="/category" component={CategoryContainer} />
         <Route component={Page404} />
       </Switch>
     </>
