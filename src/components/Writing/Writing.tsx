@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./styles";
 const category = [
   { name: "의류" },
@@ -16,27 +16,50 @@ const smallCategory = [
   { name: "성별" },
 ];
 const Writing = () => {
+  const [fileList, setFileList] = useState<FileList | null>();
+  const addFileFunc = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const nowFile = e.target.files;
+    if (!nowFile) return;
+    if (nowFile.length > 5) {
+      alert("사진은 5개까지만 넣을 수 있습니다.");
+      return;
+    }
+    setFileList(nowFile);
+  };
+  const renderImg = (): JSX.Element[] => {
+    if (!fileList) return [];
+    const list: JSX.Element[] = [];
+    for (let i = 0; i < fileList.length; i += 1) {
+      list.push(
+        <S.Img key={i} src={URL.createObjectURL(fileList[i])} alt="" />
+      );
+    }
+    return list;
+  };
   return (
     <S.Container>
       <S.Title>경매 글 작성</S.Title>
       <S.ImgWrapper>
+        {renderImg()}
         <S.AddImg htmlFor="getFile">+ 사진추가</S.AddImg>
-        <input type="file" id="getFile" style={{ display: "none" }} />
+        <input
+          type="file"
+          id="getFile"
+          style={{ display: "none" }}
+          onChange={addFileFunc}
+          accept=".jpg, jpeg, .png"
+          multiple
+        />
       </S.ImgWrapper>
       <S.ItemInfo>
         <S.ItemPrice>
           <div>
-            즉시 구매가 : <S.PriceInput /> 💰
+            즉시 구매가 : <S.PriceInput /> 💸
           </div>
           <div>
-            경매 시작가 : <S.PriceInput /> 💰
+            경매 시작가 : <S.PriceInput /> 💸
           </div>
         </S.ItemPrice>
-        <S.TimeWrapper>
-          <div>
-            시간 : <S.TimeInput /> h
-          </div>
-        </S.TimeWrapper>
         <S.CategoryWrapper>
           <span>카테고리</span>
           <S.CategoryItem>
