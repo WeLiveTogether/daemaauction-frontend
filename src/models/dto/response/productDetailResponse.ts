@@ -16,6 +16,7 @@ export interface ProductDetail {
   saleStatus: null;
   subCategoryName: string;
   title: string;
+  userId: string;
   username: string;
   views: number;
 }

@@ -9,12 +9,14 @@ import { useHistory, useParams } from "react-router";
 import { getProductDetail } from "../../utils/api/ProductDetail";
 import Timer from "./Timer/Timer";
 import ProductDetailSkeleton from "../ProductDetailSkeleton/ProductDetailSkeleton";
+import { getMyInfo } from "../../utils/api/My";
 import { attendProduct, buyProductRightOff } from "../../utils/api/Product";
 import { CreateRoom as createRoom } from "../../utils/api/Chat";
 
 const ProductDetail = (): JSX.Element => {
   const [product, setProduct] = useState<ProductDetailType | null>(null);
   const { id } = useParams<{ id: string }>();
+  const [myId, setMyId] = useState<string>("");
   const { push } = useHistory();
 
   const settingProduct = async () => {
@@ -34,7 +36,15 @@ const ProductDetail = (): JSX.Element => {
     }
   };
 
+  const settingMyId = async () => {
+    try {
+      const response = await getMyInfo();
+      setMyId(response.data.body.user.userId);
+    } catch (error) {}
+  };
+
   useEffect(() => {
+    settingMyId();
     settingProduct();
   }, []);
 

@@ -1,21 +1,43 @@
+import { useLayoutEffect, useState } from "react";
+import ChatRoomType from "../../../../interfaces/ChatRoomType";
+import State from "../../../../interfaces/State";
+import { getProductDetail } from "../../../../utils/api/ProductDetail";
 import * as S from "./styles";
 
 type PropsType = {
   active: boolean;
+  data: ChatRoomType;
+  roomIdState: State<string | null>;
 };
 
-const ChatRoom = ({ active }: PropsType): JSX.Element => {
+const ChatRoom = ({ active, roomIdState, data }: PropsType): JSX.Element => {
+  const [_, setRoomId] = roomIdState;
+  const [productName, setProductName] = useState<string>("");
+  const { username } = data.user;
+  const { msgCnt, id } = data.room;
+
+  const onClickHandler = () => {
+    setRoomId(id);
+  };
+
+  const getProductName = async () => {
+    try {
+      const response = await getProductDetail(msgCnt);
+      setProductName(response.data[0].title);
+    } catch (error) {}
+  };
+
+  useLayoutEffect(() => {
+    getProductName();
+  }, []);
+
   return (
     <>
-      <S.Container active={active}>
+      <S.Container active={active} onClick={onClickHandler}>
         <S.TitleContainer>
-          <S.Name>김진근</S.Name>
-          <span>·</span>
-          <span>12분전</span>
+          <S.Name>{username}</S.Name>
         </S.TitleContainer>
-        <S.Content>
-          안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요
-        </S.Content>
+        <S.Content>{productName}</S.Content>
       </S.Container>
     </>
   );
