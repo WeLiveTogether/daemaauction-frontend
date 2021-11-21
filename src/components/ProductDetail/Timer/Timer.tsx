@@ -24,7 +24,6 @@ const Timer = ({ to, interval }: PropsType): JSX.Element => {
     let timeout;
     (timeout = () => {
       const diff = new Date(new Date(to).getTime() - new Date().getTime());
-      console.log(new Date(to));
 
       setTimeString(dateToString(diff));
     })();
