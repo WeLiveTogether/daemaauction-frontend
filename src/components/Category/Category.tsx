@@ -1,22 +1,40 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { Select } from "../../assets";
-import { NavArr, optionArr } from "../Header/Nav";
 import DropDown from "./DropDown/DropDown";
 import * as S from "./styled";
-const bigCategorys = ["의류", "전자기기", "음식", "도서", "생활용품", "완구/취미"];
-const subCategorys = new Map<string, string[]>()
-  .set(bigCategorys[0], ["상의", "하의", "액세서리", "신발", "성별"])
-  .set(bigCategorys[1], ["생활", "컴퓨터/노트북", "주변기기"])
-  .set(bigCategorys[2], ["기프티콘", "과자/젤리/빵", "음료"])
-  .set(bigCategorys[3], ["전공도서", "교양도서"])
-  .set(bigCategorys[4], ["세탁용품", "욕실용품", "청소용품", "책상/진열대/수납"])
-  .set(bigCategorys[5], ["악기", "장난감", "보드게임/카드", "기타용품"]);
+interface PropsType {
+  bigCategoryParam: string | null;
+  subCategoryParam: string | null;
+}
 
-const Category = () => {
+const Category = ({ bigCategoryParam, subCategoryParam }: PropsType) => {
+  const bigCategorys = ["의류", "전자기기", "음식", "도서", "생활용품", "완구/취미"];
+  const subCategorys = new Map<string, string[]>()
+    .set(bigCategorys[0], ["전체", "상의", "하의", "액세서리", "신발", "성별"])
+    .set(bigCategorys[1], ["전체", "생활", "컴퓨터/노트북", "주변기기"])
+    .set(bigCategorys[2], ["전체", "기프티콘", "과자/젤리/빵", "음료"])
+    .set(bigCategorys[3], ["전체", "전공도서", "교양도서"])
+    .set(bigCategorys[4], ["전체", "세탁용품", "욕실용품", "청소용품", "책상/진열대/수납"])
+    .set(bigCategorys[5], ["전체", "악기", "장난감", "보드게임/카드", "기타용품"]);
+
   const [isBigActive, setIsBigActive] = useState<boolean>(false);
   const [isSubActive, setIsSubActive] = useState<boolean>(false);
   const [bigIndex, setBigIndex] = useState<number>(0);
   const [subIndex, setSubIndex] = useState<number>(0);
+
+  useLayoutEffect(() => {
+    try {
+      const bigI = bigCategoryParam ? bigCategorys.indexOf(bigCategoryParam) : 0;
+      const subList = subCategorys.get(bigCategorys[bigI]);
+      const subI =
+        bigCategoryParam && subCategoryParam && subList ? subList.indexOf(subCategoryParam) : 0;
+      setBigIndex(bigI);
+      setBigIndex(subI);
+    } catch (error) {
+      setBigIndex(0);
+      setBigIndex(0);
+    }
+  }, [bigCategoryParam, subCategoryParam]);
 
   const changeBigCategory = (index: number) => {
     setIsBigActive(false);
@@ -27,6 +45,20 @@ const Category = () => {
   const changeSubCategory = (index: number) => {
     setIsSubActive(false);
     setSubIndex(index);
+  };
+
+  const renderSubName = () => {
+    if (!subCategorys) return <></>;
+
+    const list = subCategorys.get(bigCategorys[bigIndex]);
+
+    if (!list) return <></>;
+
+    return (
+      <>
+        <div>{list[subIndex]}</div>&nbsp;
+      </>
+    );
   };
 
   return (
@@ -53,7 +85,7 @@ const Category = () => {
           <div>
             <S.CategoryBox onClick={() => setIsSubActive(!isSubActive)}>
               <div>소분류 :&nbsp;&nbsp;</div>
-              <div>{subCategorys.get(bigCategorys[bigIndex])![subIndex]}</div>&nbsp;
+              {renderSubName()}
               <S.Chevron src={Select} alt="chevron" rotate={isSubActive ? 180 : 360} />
             </S.CategoryBox>
             <DropDown
