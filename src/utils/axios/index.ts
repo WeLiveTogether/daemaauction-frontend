@@ -55,6 +55,7 @@ const refresh = async (config: AxiosRequestConfig) => {
       accessToken = access_token;
     } catch (error) {
       //리프레시 실패(리스레시 토큰 만료)
+      alert('오랫동안 접속하지 않아 강제 로그아웃 되었습니다.')
       window.location.href = "/login";
       return config;
     }
