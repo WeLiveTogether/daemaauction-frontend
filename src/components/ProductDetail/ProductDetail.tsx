@@ -10,6 +10,8 @@ import { getProductDetail } from "../../utils/api/ProductDetail";
 import Timer from "./Timer/Timer";
 import ProductDetailSkeleton from "../ProductDetailSkeleton/ProductDetailSkeleton";
 import { getMyInfo } from "../../utils/api/My";
+import { attendProduct, buyProductRightOff } from "../../utils/api/Product";
+import { CreateRoom as createRoom } from "../../utils/api/Chat";
 
 const ProductDetail = (): JSX.Element => {
   const [product, setProduct] = useState<ProductDetailType | null>(null);
@@ -50,6 +52,7 @@ const ProductDetail = (): JSX.Element => {
     <>
       {product ? (
         <S.Container>
+          {product.saleStatus === "SOLD_OUT" && <S.Cover>경매 완료되었습니다.</S.Cover>}
           <S.ImageContainer>
             <Slider
               items={product.productImages.map((value) => {
@@ -83,16 +86,29 @@ const ProductDetail = (): JSX.Element => {
             </S.TimeContainer>
           </S.HeaderContainer>
           <S.Content>{product.content}</S.Content>
-          {product.userId !== myId && (
-            <S.ButtonContainer>
-              <S.Button color={color.green}>
-                {product.auctionPrice.toLocaleString("ko-KR")}₩에 경매 참여
-              </S.Button>
-              <S.Button color={color.yellow}>
-                {product.immePrice.toLocaleString("ko-KR")}₩에 즉시 구매
-              </S.Button>
-            </S.ButtonContainer>
-          )}
+          <S.ButtonContainer>
+            <S.Button
+              color={color.green}
+              onClick={() => {
+                attendProduct(id, product.auctionPrice + 1000);
+                alert("경매에 참여하였습니다.");
+                window.location.reload();
+              }}
+            >
+              {(product.auctionPrice + 1000).toLocaleString("ko-KR")}₩에 경매 참여
+            </S.Button>
+            <S.Button
+              color={color.yellow}
+              onClick={() => {
+                buyProductRightOff(id);
+                alert("즉시 구매하였습니다.");
+                createRoom(id);
+                window.location.reload();
+              }}
+            >
+              {product.immePrice.toLocaleString("ko-KR")}₩에 즉시 구매
+            </S.Button>
+          </S.ButtonContainer>
         </S.Container>
       ) : (
         <ProductDetailSkeleton />
