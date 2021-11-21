@@ -6,6 +6,7 @@ import { io, Socket } from "socket.io-client";
 import { getMyInfo } from "../../utils/api/My";
 import { User } from "../../models/dto/response/myInfoResponse";
 import ChatRoomSkeleton from "./component/ChatRoomList/ChatRoomSkeleton/ChatRoomSkeleton";
+import ChattingSkeleton from "./component/Chatting/ChattingSkeleton/ChattingSkeleton";
 
 interface MsgRes {
   msg: "string";
@@ -38,7 +39,7 @@ const Chat = (): JSX.Element => {
     setSocket(socket);
   }, []);
 
-  const [roomId, setRoomId] = useState<number | null>(null);
+  const [roomId, setRoomId] = useState<string | null>("5");
 
   return (
     <>
@@ -52,7 +53,11 @@ const Chat = (): JSX.Element => {
             )}
             <S.Line />
             <S.ChatContainer>
-              {roomId && userId && <Chatting socket={socket} roomId={roomId} userId={userId} />}
+              {roomId && userId ? (
+                <Chatting socket={socket} roomId={roomId} userId={userId} />
+              ) : (
+                <ChattingSkeleton />
+              )}
             </S.ChatContainer>
           </>
         )}
