@@ -33,12 +33,24 @@ const Chatting = ({ socket, roomId, userId }: PropsType) => {
     });
   }, [messages]);
 
-  const renderMessage = messages.map((value, index) => {
+  const renderMessage = messages.map((value, index, array) => {
     const { msg, senderId } = value;
 
     const component = senderId === userId ? MyChat : YourChat;
+    let isDiff = false;
 
-    return React.createElement(component, { message: msg, key: index });
+    if (index !== 0) {
+      const prevId = array[index - 1].senderId;
+
+      isDiff = prevId !== senderId;
+    }
+
+    return (
+      <>
+        {isDiff && <S.ChatMargin />}
+        {React.createElement(component, { message: msg, key: index })}
+      </>
+    );
   });
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
