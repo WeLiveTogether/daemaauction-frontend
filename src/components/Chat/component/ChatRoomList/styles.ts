@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import { color } from "../../../../styles/color";
+import { font } from "../../../../styles/font";
 
 export const ChatRoomContainer = styled.div`
   width: 20%;
@@ -10,4 +12,13 @@ export const ChatRoomContainer = styled.div`
   overflow: auto;
   overflow-x: hidden;
   padding: 0px 16px 16px 16px;
+`;
+
+export const ChatRoomNone = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: ${font.headline3};
+  color: ${color.black};
 `;
