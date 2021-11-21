@@ -67,21 +67,22 @@ const Category = ({ bigCategoryParam, subCategoryParam }: PropsType) => {
       const category = subIndex === 0 ? bigCategoryParam! : subCategoryParam!;
       const response = await request(category);
       setProducts(
-        response.data.map((value) => {
-          const { auctionPrice, categoryId, id, name, user, views } = value;
+        response.data.list.map((value) => {
+          const { auctionPrice, id, title, user, views, category, imageUrl } = value;
           const data: Product = {
-            title: name,
-            imageUrl: "",
-            views: views,
+            title: title,
+            imageUrl: imageUrl || "",
+            views: Number(views),
             auctionPrice: auctionPrice,
             userName: user.username,
-            category: categoryId.name,
-            productId: id,
+            category: category.name,
+            productId: Number(id),
             content: "",
             createDate: "",
             immePrice: 0,
             subCategory: "",
           };
+          console.log(data);
 
           return data;
         })
