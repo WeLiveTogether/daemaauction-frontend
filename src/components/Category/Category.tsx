@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
+import { useHistory } from "react-router";
 import { Select } from "../../assets";
 import DropDown from "./DropDown/DropDown";
 import * as S from "./styled";
@@ -17,24 +18,51 @@ const Category = ({ bigCategoryParam, subCategoryParam }: PropsType) => {
     .set(bigCategorys[4], ["전체", "세탁용품", "욕실용품", "청소용품", "책상/진열대/수납"])
     .set(bigCategorys[5], ["전체", "악기", "장난감", "보드게임/카드", "기타용품"]);
 
+  const initBig = () => {
+    const bigI = bigCategoryParam ? bigCategorys.indexOf(bigCategoryParam) : 0;
+    console.log(bigI);
+
+    return bigI;
+  };
+
+  const initSub = () => {
+    const bigI = bigCategoryParam ? bigCategorys.indexOf(bigCategoryParam) : 0;
+    const subList = subCategorys.get(bigCategorys[bigI]);
+    const subI =
+      bigCategoryParam && subCategoryParam && subList ? subList.indexOf(subCategoryParam) : 0;
+    console.log(subI);
+    return subI;
+  };
+
   const [isBigActive, setIsBigActive] = useState<boolean>(false);
   const [isSubActive, setIsSubActive] = useState<boolean>(false);
-  const [bigIndex, setBigIndex] = useState<number>(0);
-  const [subIndex, setSubIndex] = useState<number>(0);
+  const [bigIndex, setBigIndex] = useState<number>(initBig());
+  const [subIndex, setSubIndex] = useState<number>(initSub());
+
+  const { push } = useHistory();
 
   useLayoutEffect(() => {
     try {
-      const bigI = bigCategoryParam ? bigCategorys.indexOf(bigCategoryParam) : 0;
-      const subList = subCategorys.get(bigCategorys[bigI]);
-      const subI =
-        bigCategoryParam && subCategoryParam && subList ? subList.indexOf(subCategoryParam) : 0;
-      setBigIndex(bigI);
-      setBigIndex(subI);
+      setBigIndex(initBig());
+      setSubIndex(initSub());
     } catch (error) {
       setBigIndex(0);
-      setBigIndex(0);
+      setSubIndex(0);
     }
   }, [bigCategoryParam, subCategoryParam]);
+
+  useLayoutEffect(() => {
+    const subList = subCategorys.get(bigCategorys[bigIndex]);
+    if (subList) {
+      const subString = subIndex === 0 ? "" : `subcategory=${subList[subIndex]}`;
+      const bigString = `category=${bigCategorys[bigIndex]}`;
+
+      const list: string[] = [];
+      list.push(bigString);
+      if (subString !== "") list.push(subString);
+      push(`?${list.join("&")}`);
+    }
+  }, [bigIndex, subIndex]);
 
   const changeBigCategory = (index: number) => {
     setIsBigActive(false);
