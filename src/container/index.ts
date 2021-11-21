@@ -7,3 +7,4 @@ export { default as ChatContainer } from "./Chat";
 export { default as LoginSuccessContainer } from "./LoginSuccess";
 export { default as WritingContainer } from './Writing'
 export { default as ProductDetailContainer } from "./ProductDetail";
+export { default as CategoryContainer } from "./Category";

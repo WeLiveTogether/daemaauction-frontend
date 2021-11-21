@@ -1,8 +1,8 @@
 import React from "react";
 import * as S from "./style";
 import { Select } from "../../assets";
-const NavArr = ["의류", "전자기기", "음식", "도서", "생활용품", "완구/취미"];
-const optionArr = [
+export const NavArr = ["의류", "전자기기", "음식", "도서", "생활용품", "완구/취미"];
+export const optionArr = [
   [
     { value: "", name: "상의" },
     { value: "", name: "하의" },
