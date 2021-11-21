@@ -2,24 +2,56 @@ import MyChat from "../MyChat/MyChat";
 import YourChat from "../YourChat/YourChat";
 import * as S from "./styles";
 import Send from "../../../../assets/icons/send.svg";
-import { useEffect, useLayoutEffect, useRef } from "react";
-import socketio, { Socket } from "socket.io-client";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import State from "../../../../interfaces/State";
+import { Socket } from "socket.io-client";
 
 interface PropsType {
   socket: Socket;
+  roomId: number;
+  userId: string;
 }
 
-const Chatting = ({ socket }: PropsType) => {
+interface Msg {
+  msg: string;
+  senderId: string;
+  senderName: string;
+  time: string;
+}
+
+const Chatting = ({ socket, roomId, userId }: PropsType) => {
+  const [messages, setMessages] = useState<Msg[]>([]);
+  const [content, setContent] = useState<string>("");
+
   useLayoutEffect(() => {
-    socket.emit("joinRoom", socket, 5);
-
-    socket.on("chatRoomList", (data) => {
-      console.log(data);
-    });
-
-    console.log("ASD");
+    socket.emit("joinRoom", roomId);
   }, []);
+
+  useLayoutEffect(() => {
+    socket.on("msgToClient", (data: Msg) => {
+      setMessages(messages.concat(data));
+    });
+  }, [messages]);
+
+  const renderMessage = messages.map((value, index) => {
+    const { msg, senderId } = value;
+
+    const component = senderId === userId ? MyChat : YourChat;
+
+    return React.createElement(component, { message: msg, key: index });
+  });
+
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setContent(e.target.value);
+  };
+
+  const onClickHandler = () => {
+    if (content.length <= 0) {
+      return;
+    }
+    socket.emit("msgToServer", { msg: content, userId: userId, roomId: roomId });
+    setContent("");
+  };
 
   return (
     <S.ChattingContiner>
@@ -31,24 +63,11 @@ const Chatting = ({ socket }: PropsType) => {
         </S.TitleContaienr>
         <S.TitleLine />
       </S.ChatTitleContainer>
-      <S.ChatContentContainer>
-        <S.ChatBundle>
-          <YourChat message="모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가" />
-          <YourChat message="모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다. 국가는 개인이 가지는 불가침의 기본적 인권을 확인하고 이를 보장할 의무를 진다.모든 국민은 사생활의 비밀과 자유를 침해받지 아니한다. 한 회계연도를 넘어 계속하여 지출할 필요가 있을 때에는 정부는 연한을 정하여 계속비로서 국회의 의결을 얻어야 한다." />
-        </S.ChatBundle>
-        <S.ChatBundle>
-          <MyChat message="모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가" />
-          <MyChat message="모든 국민은 인간으로서의 존엄과 가치를 가지며, 행복을 추구할 권리를 가진다. 국가는 개인이 가지는 불가침의 기본적 인권을 확인하고 이를 보장할 의무를 진다.모든 국민은 사생활의 비밀과 자유를 침해받지 아니한다. 한 회계연도를 넘어 계속하여 지출할 필요가 있을 때에는 정부는 연한을 정하여 계속비로서 국회의 의결을 얻어야 한다." />
-        </S.ChatBundle>
-      </S.ChatContentContainer>
+      <S.ChatContentContainer>{renderMessage}</S.ChatContentContainer>
       <S.ChatInputContainer>
         <S.InputContainer>
-          <S.Input placeholder="내용을 입력해주세요." />
-          <S.SendButton
-            onClick={() => {
-              socket.emit("msgToServer", socket, { msg: "hello", userId: 5, roomId: 5 });
-            }}
-          >
+          <S.Input placeholder="내용을 입력해주세요." value={content} onChange={onChangeHandler} />
+          <S.SendButton onClick={onClickHandler}>
             <img alt="send" src={Send} />
           </S.SendButton>
         </S.InputContainer>
