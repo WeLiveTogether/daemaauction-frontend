@@ -45,9 +45,11 @@ export const ChatContentContainer = styled.div`
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  padding: 16px 16px 24px 16px;
   overflow-x: hidden;
   overflow-y: scroll;
+  position: relative;
+  margin: 16px 0px 24px 0px;
+  padding: 0px 16px 0px 16px;
 `;
 
 export const ChatContentContainerInner = styled.div`

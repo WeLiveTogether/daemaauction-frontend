@@ -35,6 +35,7 @@ const Chatting = ({ socket, roomId, userId, userName }: PropsType) => {
   useLayoutEffect(() => {
     setMessages(null);
     socket.emit("joinRoom", roomId);
+    console.log(socket.id);
 
     socket.on("chatMsgList", (data: PrevMsg[]) => {
       const msgList = data.map((value) => {
@@ -61,6 +62,7 @@ const Chatting = ({ socket, roomId, userId, userName }: PropsType) => {
       console.log(data);
       if (messages) setMessages(messages.concat(data));
     });
+    if (containerRef.current) containerRef.current.scrollTop = containerRef.current.scrollHeight;
   }, [messages, roomId]);
 
   const renderMessage = (messages || []).map((value, index, array) => {
@@ -100,6 +102,8 @@ const Chatting = ({ socket, roomId, userId, userName }: PropsType) => {
     if (e.keyCode === 13) onSend();
   };
 
+  const containerRef = useRef<HTMLDivElement>(null);
+
   return (
     <>
       {!messages ? (
@@ -109,13 +113,13 @@ const Chatting = ({ socket, roomId, userId, userName }: PropsType) => {
           <S.ChatTitleContainer>
             <S.TitleContaienr>
               <S.Bold>김진근</S.Bold>
-              <S.Description>·</S.Description>
-              <S.Description>프로필 보기</S.Description>
             </S.TitleContaienr>
             <S.TitleLine />
           </S.ChatTitleContainer>
           <S.ChatContentContainer>
-            <S.ChatContentContainerInner>{renderMessage}</S.ChatContentContainerInner>
+            <S.ChatContentContainerInner ref={containerRef}>
+              {renderMessage}
+            </S.ChatContentContainerInner>
           </S.ChatContentContainer>
           <S.ChatInputContainer>
             <S.InputContainer>
