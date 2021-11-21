@@ -19,6 +19,9 @@ export const ChatRoomNone = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font: ${font.headline3};
+  font: ${font.subtitle};
   color: ${color.black};
+  background-color: ${color.white};
+  padding: 8px 0px;
+  border-radius: 5px;
 `;
