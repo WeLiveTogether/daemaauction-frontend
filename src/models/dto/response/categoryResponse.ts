@@ -1,22 +1,18 @@
 export interface ProductCategory {
-  createdDate: string;
-  modifiedDate: string;
-  id: number;
-  name: string;
-  immePrice: number;
   auctionPrice: number;
-  startAt: string;
-  views: number;
-  user: {
-    username: string;
-  };
-  categoryId: {
-    name: string;
-  };
-  subCategoryId: {
-    name: string;
-  };
+  category: { name: string };
+  createDate: string;
+  createdDate: string;
+  id: string;
+  imageUrl: null | string;
+  immePrice: number;
+  modifiedDate: null | string;
+  subCategory: { name: string };
+  title: string;
+  user: { username: string };
+  views: string;
 }
 
-type categoryResponse = ProductCategory[];
-export default categoryResponse;
+export default interface categoryResponse {
+  list: ProductCategory[];
+}
