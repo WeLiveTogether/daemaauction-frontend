@@ -47,15 +47,14 @@ export const ChatContentContainer = styled.div`
   box-sizing: border-box;
   flex-direction: column;
   display: flex;
-  row-gap: 48px;
+  row-gap: 12px;
   justify-content: flex-end;
   padding: 16px 16px 24px 16px;
 `;
 
-export const ChatBundle = styled.div`
-  display: flex;
-  flex-direction: column;
-  row-gap: 12px;
+export const ChatMargin = styled.div`
+  width: 100%;
+  padding-top: 12px;
 `;
 
 export const ChatInputContainer = styled.div`
