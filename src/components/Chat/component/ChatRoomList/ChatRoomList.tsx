@@ -1,18 +1,14 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import { Socket } from "socket.io-client";
+import ChatRoomType from "../../../../interfaces/ChatRoomType";
 import State from "../../../../interfaces/State";
 import ChatRoom from "../ChatRoom/ChatRoom";
 import * as S from "./styles";
 
 interface PropsType {
   socket: Socket;
-  roomIdState: State<number | null>;
+  roomIdState: State<string | null>;
   userId: string;
-}
-
-interface ChatRoomType {
-  id: number;
-  name: string;
 }
 
 const ChatRoomList = ({ socket, roomIdState, userId }: PropsType) => {
@@ -21,9 +17,11 @@ const ChatRoomList = ({ socket, roomIdState, userId }: PropsType) => {
 
   useLayoutEffect(() => {
     socket.on("chatRoomList", (data: ChatRoomType[]) => {
-      setRoomId(data[0].id);
-      setRoomList(data);
       console.log(data);
+      setRoomList(data);
+      if (data.length > 0) {
+        setRoomId(data[0].id);
+      }
     });
 
     socket.emit("chatRoomList", userId);
@@ -33,15 +31,9 @@ const ChatRoomList = ({ socket, roomIdState, userId }: PropsType) => {
     <S.ChatRoomContainer>
       {roomList &&
         roomList.map((value, index) => {
-          const { name, id } = value;
+          const { id } = value;
           return (
-            <ChatRoom
-              active={roomId === id}
-              name={name}
-              id={id}
-              roomIdState={roomIdState}
-              key={index}
-            />
+            <ChatRoom active={roomId === id} data={value} roomIdState={roomIdState} key={index} />
           );
         })}
     </S.ChatRoomContainer>
