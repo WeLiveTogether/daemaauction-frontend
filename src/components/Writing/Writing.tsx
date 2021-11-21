@@ -132,7 +132,13 @@ const Writing = () => {
         <S.ItemPrice>
           <div>
             즉시 구매가 :
-            <S.PriceInput name="nowbuy" value={nowbuy} onChange={onChange} /> 💸
+            <S.PriceInput
+              name="nowbuy"
+              value={nowbuy}
+              onChange={onChange}
+              type="number"
+            />
+            💸
           </div>
           <div>
             경매 시작가 :
@@ -140,6 +146,7 @@ const Writing = () => {
               name="startauction"
               value={startauction}
               onChange={onChange}
+              type="number"
             />{" "}
             💸
           </div>
