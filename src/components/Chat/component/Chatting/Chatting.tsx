@@ -8,7 +8,7 @@ import { Socket } from "socket.io-client";
 
 interface PropsType {
   socket: Socket;
-  roomId: number;
+  roomId: string;
   userId: string;
 }
 
