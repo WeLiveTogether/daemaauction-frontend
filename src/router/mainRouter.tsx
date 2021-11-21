@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Switch, Route } from "react-router-dom";
+import Page404 from "../components/Page404/Page404";
 import {
   MainContainer,
   MyPageContainer,
@@ -25,6 +26,7 @@ const MainRouter: FC = (): JSX.Element => {
         <Route exact path="/login/success" component={LoginSuccessContainer} />
         <Route exact path="/writing" component={WritingContainer} />
         <Route exact path="/product/:id" component={ProductDetailContainer} />
+        <Route component={Page404} />
       </Switch>
     </>
   );
