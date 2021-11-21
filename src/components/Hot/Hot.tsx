@@ -1,42 +1,44 @@
 import * as S from "./styles";
-import { count , testItem } from '../../assets/index';
+import ProductCard from "../ProductCard/ProductCard";
+import ProductCardSkeleton from "../ProductCardSkeleton/ProductCardSkeleton";
+import productListResponse from "../../models/dto/response/productListResponse";
+import { useEffect, useState } from "react";
+import { getHotProducts } from "../../utils/api/Hot";
+
 const Hot = (): JSX.Element => {
+  const [hotProductList, setHotProductList] = useState<productListResponse>([]);
+  const [isHotLoading, setIsHotLoading] = useState<boolean>(false);
 
-  const hotItem = [1,2,3,4,5,6,7,8];
+  const skeletons = [1, 2, 3, 4].map(() => {
+    return <ProductCardSkeleton />;
+  });
 
-  const hotItemList = hotItem.map((_, index) => (
-    <S.HotItem key={index}>
-      <S.ItemImg>
-        <img alt="productImg" src={testItem}/>
-      </S.ItemImg>
-      <S.ItemTitle>
-        2021년 햇꿀고구마 팝니다.
-      </S.ItemTitle>
-      <S.ItemDetailTop>
-        <div>전자기기</div>
-        <div>김진근</div>
-      </S.ItemDetailTop>
-      <S.ItemDetailBottom>
-        <S.ItemPrice>
-          700,000₩
-        </S.ItemPrice>
-        <S.Count>
-          <S.CountImg alt="productImg" src={count} />
-          16명
-        </S.Count>
-      </S.ItemDetailBottom>
-    </S.HotItem>
-  ));
+  const setItemList = async () => {
+    try {
+      setIsHotLoading(true);
+      setHotProductList((await getHotProducts()).data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsHotLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    setItemList();
+  }, []);
+
+  const hotItemList = hotProductList.map((value) => {
+    return <ProductCard product={value} key={value.productId} />;
+  });
 
   return (
     <>
       <S.Container>
-        <S.Title>
-          인기있는 경매 물품
-        </S.Title>
+        <S.Title>인기있는 경매 물품</S.Title>
         <S.ItemContainer>
           <S.HotItemList>
-            {hotItemList}
+            {isHotLoading ? skeletons : hotItemList}
           </S.HotItemList>
         </S.ItemContainer>
       </S.Container>
