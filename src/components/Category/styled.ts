@@ -41,4 +41,8 @@ export const Chevron = styled.img<{ rotate: number }>`
 
 export const ItemContainer = styled.div`
   margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 30px;
+  row-gap: 30px;
 `;
