@@ -17,16 +17,19 @@ export const ImgWrapper = styled.div`
     background-color: ${color.white};
     box-sizing: border-box;
     padding: 16px;
-    display: flex;
-    word-break:break-all;
-    word-wrap:break-word;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    margin-top: 30px;
 `;
-export const Img = styled.div`
+export const Img = styled.img`
     width: 340px;
     height: 226px;
-    border: 1px solid black;
     border-radius: 5px;
+    margin-right: 10px;
+    margin-right: 30px;
+    object-fit: cover;
+    object-position: center;
 `;
 export const AddImg = styled.label`
     background: ${color.green};
@@ -44,7 +47,7 @@ export const AddImg = styled.label`
 `;
 export const ItemInfo = styled.div`
     width: 1110px;
-    height: 340px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -65,11 +68,6 @@ export const PriceInput = styled.input`
     outline: none;
     border: none;
 `;
-export const TimeWrapper = styled(ItemPrice)`
-`
-export const TimeInput = styled(PriceInput)`
-    width: 52px;
-`
 export const CategoryWrapper = styled.div`
     width: 410px;
     height: 20px;
@@ -81,9 +79,6 @@ export const CategoryItem = styled.div`
     height: 100%;
     display: flex;
     justify-content: space-between;
-    &{
-        color: ${color.gray}
-    }
     & :hover{
         cursor: pointer;
     }

@@ -19,7 +19,7 @@ export const LeftGroup = styled.div`
 export const RightHalf = styled.div`
   position: absolute;
   bottom: 0;
-  right: 5vw;
+  right: -0.8vw;
   transform-origin: bottom;
   transform: scale(0.9);
   width: 302px;
