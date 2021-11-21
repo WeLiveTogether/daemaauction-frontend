@@ -12,26 +12,28 @@ const ChattingSkeleton = (): JSX.Element => {
         <I.TitleLine />
       </I.ChatTitleContainer>
       <I.ChatContentContainer>
-        <S.MyChatContainer>
-          <S.MyChatContentContainer>
-            <S.ChatContent1 />
-          </S.MyChatContentContainer>
-        </S.MyChatContainer>
-        <S.MyChatContainer>
-          <S.MyChatContentContainer>
-            <S.ChatContent2 />
-          </S.MyChatContentContainer>
-        </S.MyChatContainer>
-        <S.YourChatContainer>
-          <S.YourChatContentContainer>
-            <S.ChatContent1 />
-          </S.YourChatContentContainer>
-        </S.YourChatContainer>
-        <S.YourChatContainer>
-          <S.YourChatContentContainer>
-            <S.ChatContent2 />
-          </S.YourChatContentContainer>
-        </S.YourChatContainer>
+        <I.ChatContentContainerInner>
+          <S.MyChatContainer>
+            <S.MyChatContentContainer>
+              <S.ChatContent1 />
+            </S.MyChatContentContainer>
+          </S.MyChatContainer>
+          <S.MyChatContainer>
+            <S.MyChatContentContainer>
+              <S.ChatContent2 />
+            </S.MyChatContentContainer>
+          </S.MyChatContainer>
+          <S.YourChatContainer>
+            <S.YourChatContentContainer>
+              <S.ChatContent1 />
+            </S.YourChatContentContainer>
+          </S.YourChatContainer>
+          <S.YourChatContainer>
+            <S.YourChatContentContainer>
+              <S.ChatContent2 />
+            </S.YourChatContentContainer>
+          </S.YourChatContainer>
+        </I.ChatContentContainerInner>
       </I.ChatContentContainer>
       <I.ChatInputContainer>
         <I.InputContainer>

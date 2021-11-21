@@ -18,6 +18,7 @@ const Chat = (): JSX.Element => {
   const [socket, setSocket] = useState<Socket | null>(null);
 
   const [userId, setUserId] = useState<string | null>(null);
+  const [userName, setUserName] = useState<string>("");
 
   const setMyInfo = async () => {
     try {
@@ -25,6 +26,7 @@ const Chat = (): JSX.Element => {
       console.log(data);
 
       setUserId(data.data.body.user.userId);
+      setUserName(data.data.body.user.username);
     } catch (error) {
       console.log(error);
     }
@@ -54,7 +56,7 @@ const Chat = (): JSX.Element => {
             <S.Line />
             <S.ChatContainer>
               {roomId && userId ? (
-                <Chatting socket={socket} roomId={roomId} userId={userId} />
+                <Chatting socket={socket} roomId={roomId} userId={userId} userName={userName} />
               ) : (
                 <ChattingSkeleton />
               )}

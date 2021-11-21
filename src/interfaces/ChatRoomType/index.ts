@@ -3,7 +3,6 @@ export default interface ChatRoomType {
   room: {
     id: string;
     msgCnt: number;
-    roomId: string;
   };
   user: {
     createdDate: string;

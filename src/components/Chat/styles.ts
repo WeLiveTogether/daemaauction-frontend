@@ -4,11 +4,12 @@ import { font } from "../../styles/font";
 
 export const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: calc(100% - 64px);
   top: 0;
   left: 0;
   display: flex;
   background-color: #f7fbfe;
+  max-height: calc(100% - 64px);
 `;
 
 export const Line = styled.div`

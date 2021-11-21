@@ -11,6 +11,7 @@ export const ChatRoomContainer = styled.div`
   row-gap: 12px;
   overflow: auto;
   overflow-x: hidden;
+  box-sizing: border-box;
   padding: 0px 16px 16px 16px;
 `;
 

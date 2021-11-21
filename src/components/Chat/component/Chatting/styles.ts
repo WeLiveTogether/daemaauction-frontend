@@ -45,11 +45,18 @@ export const ChatContentContainer = styled.div`
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  flex-direction: column;
-  display: flex;
-  row-gap: 12px;
-  justify-content: flex-end;
   padding: 16px 16px 24px 16px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+`;
+
+export const ChatContentContainerInner = styled.div`
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  row-gap: 12px;
 `;
 
 export const ChatMargin = styled.div`

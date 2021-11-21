@@ -21,7 +21,7 @@ const ChatRoomList = ({ socket, roomIdState, userId }: PropsType) => {
       console.log(data);
       setRoomList(data);
       if (data.length > 0) {
-        setRoomId(data[0].id);
+        setRoomId(data[0].room.id);
       }
     });
 
@@ -42,8 +42,14 @@ const ChatRoomList = ({ socket, roomIdState, userId }: PropsType) => {
     }
 
     return roomList.map((value, index) => {
-      const { id } = value;
-      return <ChatRoom active={roomId === id} data={value} roomIdState={roomIdState} key={index} />;
+      return (
+        <ChatRoom
+          active={roomId === value.room.id}
+          data={value}
+          roomIdState={roomIdState}
+          key={index}
+        />
+      );
     });
   };
 

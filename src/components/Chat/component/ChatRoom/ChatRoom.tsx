@@ -11,11 +11,10 @@ type PropsType = {
 };
 
 const ChatRoom = ({ active, roomIdState, data }: PropsType): JSX.Element => {
-  const [roomId, setRoomId] = roomIdState;
+  const [_, setRoomId] = roomIdState;
   const [productName, setProductName] = useState<string>("");
   const { username } = data.user;
-  const { msgCnt } = data.room;
-  const { id } = data;
+  const { msgCnt, id } = data.room;
 
   const onClickHandler = () => {
     setRoomId(id);
