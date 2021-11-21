@@ -57,12 +57,17 @@ const Chatting = ({ socket, roomId, userId }: PropsType) => {
     setContent(e.target.value);
   };
 
-  const onClickHandler = () => {
+  const onSend = () => {
     if (content.length <= 0) {
       return;
     }
+
     socket.emit("msgToServer", { msg: content, userId: userId, roomId: roomId });
     setContent("");
+  };
+
+  const onKeyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.keyCode === 13) onSend();
   };
 
   return (
@@ -78,8 +83,13 @@ const Chatting = ({ socket, roomId, userId }: PropsType) => {
       <S.ChatContentContainer>{renderMessage}</S.ChatContentContainer>
       <S.ChatInputContainer>
         <S.InputContainer>
-          <S.Input placeholder="내용을 입력해주세요." value={content} onChange={onChangeHandler} />
-          <S.SendButton onClick={onClickHandler}>
+          <S.Input
+            placeholder="내용을 입력해주세요."
+            value={content}
+            onChange={onChangeHandler}
+            onKeyDown={onKeyDownHandler}
+          />
+          <S.SendButton onClick={onSend}>
             <img alt="send" src={Send} />
           </S.SendButton>
         </S.InputContainer>
