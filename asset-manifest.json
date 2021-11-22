@@ -2,14 +2,14 @@
   "files": {
     "main.js": "/daemaauction-frontend/static/js/main.1ef36e75.chunk.js",
     "main.js.map": "/daemaauction-frontend/static/js/main.1ef36e75.chunk.js.map",
-    "runtime-main.js": "/daemaauction-frontend/static/js/runtime-main.538e59aa.js",
-    "runtime-main.js.map": "/daemaauction-frontend/static/js/runtime-main.538e59aa.js.map",
+    "runtime-main.js": "/daemaauction-frontend/static/js/runtime-main.1e808483.js",
+    "runtime-main.js.map": "/daemaauction-frontend/static/js/runtime-main.1e808483.js.map",
     "static/js/2.800d58e4.chunk.js": "/daemaauction-frontend/static/js/2.800d58e4.chunk.js",
     "static/js/2.800d58e4.chunk.js.map": "/daemaauction-frontend/static/js/2.800d58e4.chunk.js.map",
     "static/js/3.65d3d1ea.chunk.js": "/daemaauction-frontend/static/js/3.65d3d1ea.chunk.js",
     "static/js/3.65d3d1ea.chunk.js.map": "/daemaauction-frontend/static/js/3.65d3d1ea.chunk.js.map",
-    "static/js/4.a6cd3296.chunk.js": "/daemaauction-frontend/static/js/4.a6cd3296.chunk.js",
-    "static/js/4.a6cd3296.chunk.js.map": "/daemaauction-frontend/static/js/4.a6cd3296.chunk.js.map",
+    "static/js/4.95aec32a.chunk.js": "/daemaauction-frontend/static/js/4.95aec32a.chunk.js",
+    "static/js/4.95aec32a.chunk.js.map": "/daemaauction-frontend/static/js/4.95aec32a.chunk.js.map",
     "index.html": "/daemaauction-frontend/index.html",
     "static/js/2.800d58e4.chunk.js.LICENSE.txt": "/daemaauction-frontend/static/js/2.800d58e4.chunk.js.LICENSE.txt",
     "static/js/3.65d3d1ea.chunk.js.LICENSE.txt": "/daemaauction-frontend/static/js/3.65d3d1ea.chunk.js.LICENSE.txt",
@@ -37,7 +37,7 @@
     "static/media/time.b4d53e09.svg": "/daemaauction-frontend/static/media/time.b4d53e09.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.538e59aa.js",
+    "static/js/runtime-main.1e808483.js",
     "static/js/3.65d3d1ea.chunk.js",
     "static/js/main.1ef36e75.chunk.js"
   ]
