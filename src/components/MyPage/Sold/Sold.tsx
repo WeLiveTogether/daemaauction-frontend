@@ -2,8 +2,13 @@ import * as S from "./styles";
 import Slider from "../Slider/Slider";
 import { useState, useEffect } from "react";
 import { count, testItem } from "../../../assets";
+import { MyPageProductList } from "../../../models/dto/response/productListResponse";
 
-const Sold = (): JSX.Element => {
+interface PropsType {
+  myPageInfo: MyPageProductList;
+}
+
+const Sold = ({myPageInfo}: PropsType): JSX.Element => {
   const itemList = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
   ];

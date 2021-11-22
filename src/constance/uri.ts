@@ -7,6 +7,7 @@ enum uri {
   productLatest = "/api/products-latest",
   productPopularity = "/api/products-popularity",
   users = "/api/users",
+  myProduct = "/api/mypage",
   productCategory = "/product/category",
   productSubCategory = "/product/subCategory",
   attendProduct = "/api/attend-auction",

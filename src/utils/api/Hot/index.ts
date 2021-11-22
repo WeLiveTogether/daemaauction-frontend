@@ -1,9 +1,9 @@
 import uri from "../../../constance/uri";
 import productListResponse from "../../../models/dto/response/productListResponse";
-import { DEAMA_AUCTION, getRequest } from "../../axios";
+import { DAEMA_AUCTION, getRequest } from "../../axios";
 
 export const getHotProducts = async () => {
-  const request = getRequest(DEAMA_AUCTION);
+  const request = getRequest(DAEMA_AUCTION);
   try {
     return await request.get<productListResponse>(uri.productPopularity);
   } catch (error) {
