@@ -57,7 +57,7 @@ export const NavWrapper = styled.div`
     z-index: 2;
   }
 `;
-export const NavItem = styled(Link)`
+export const NavItem = styled.div`
   line-height: 65px;
   text-align: center;
   width: 120px;
