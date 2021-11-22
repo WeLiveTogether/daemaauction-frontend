@@ -35,7 +35,6 @@ const Chatting = ({ socket, roomId, userId, userName }: PropsType) => {
   useLayoutEffect(() => {
     setMessages(null);
     socket.emit("joinRoom", roomId);
-    console.log(socket.id);
 
     socket.on("chatMsgList", (data: PrevMsg[]) => {
       const msgList = data.map((value) => {
@@ -49,7 +48,6 @@ const Chatting = ({ socket, roomId, userId, userName }: PropsType) => {
         };
         return v;
       });
-      console.log(data);
 
       setMessages(msgList);
     });
@@ -59,7 +57,6 @@ const Chatting = ({ socket, roomId, userId, userName }: PropsType) => {
 
   useLayoutEffect(() => {
     socket.on("msgToClient", (data: Msg) => {
-      console.log(data);
       if (messages) setMessages(messages.concat(data));
     });
     if (containerRef.current) containerRef.current.scrollTop = containerRef.current.scrollHeight;

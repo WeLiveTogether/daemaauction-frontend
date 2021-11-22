@@ -10,7 +10,6 @@ interface PropsType {
 const ProductCard = ({ product }: PropsType): JSX.Element => {
   const { title, imageUrl, views, auctionPrice, userName, category, productId, saleStatus } =
     product;
-  console.log(saleStatus);
 
   const price = auctionPrice.toLocaleString("ko-KR");
   const { push } = useHistory();

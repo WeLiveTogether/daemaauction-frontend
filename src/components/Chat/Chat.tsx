@@ -23,7 +23,6 @@ const Chat = (): JSX.Element => {
   const setMyInfo = async () => {
     try {
       const data = await getMyInfo();
-      console.log(data);
 
       setUserId(data.data.body.user.userId);
       setUserName(data.data.body.user.username);

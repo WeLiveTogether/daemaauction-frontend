@@ -72,6 +72,7 @@ const Slider = ({ items }: PropsType): JSX.Element => {
                 onClick={() => {
                   setIndex(i);
                 }}
+                key={i}
               />
             );
           })}

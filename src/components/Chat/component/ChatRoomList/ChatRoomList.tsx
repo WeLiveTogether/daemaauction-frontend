@@ -18,7 +18,6 @@ const ChatRoomList = ({ socket, roomIdState, userId }: PropsType) => {
 
   useLayoutEffect(() => {
     socket.on("chatRoomList", (data: ChatRoomType[]) => {
-      console.log(data);
       setRoomList(data);
       if (data.length > 0) {
         setRoomId(data[0].room.id);

@@ -12,7 +12,7 @@ const DropDown = ({ array, selected, isActive, setSelected }: PropsType): JSX.El
     <S.InnerItemList display={isActive ? "block" : "none"}>
       {array.map((value, index) => {
         return (
-          <S.InnerItem onClick={() => setSelected(index)}>
+          <S.InnerItem onClick={() => setSelected(index)} key={index}>
             {selected === index ? <S.Dot /> : <S.DotNone />}
             {value}
           </S.InnerItem>

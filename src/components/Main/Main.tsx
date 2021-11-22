@@ -10,8 +10,8 @@ const Main = (): JSX.Element => {
   const [isPopularLoading, setIsPopularLoading] = useState<boolean>(false);
   const [isLatestLoading, setIsLatestLoading] = useState<boolean>(false);
 
-  const skeletons = [1, 2, 3, 4].map(() => {
-    return <ProductCardSkeleton />;
+  const skeletons = [1, 2, 3, 4].map((_, index) => {
+    return <ProductCardSkeleton key={index} />;
   });
 
   const setPopularProducts = async () => {
