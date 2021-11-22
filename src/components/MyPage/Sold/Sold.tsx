@@ -37,10 +37,10 @@ const Sold = ({ productInfo }: PropsType): JSX.Element => {
           items.push(<div />);
           continue;
         }
-        const k: JSX.Element = <ProductCard product={data[j]} />;
+        const k: JSX.Element = <ProductCard key={j} product={data[j]} />;
         items.push(k);
       }
-      const temp: JSX.Element = <S.ItemList>{items}</S.ItemList>;
+      const temp: JSX.Element = <S.ItemList key={i}>{items}</S.ItemList>;
       soldItem.push(temp);
     }
     return soldItem;
