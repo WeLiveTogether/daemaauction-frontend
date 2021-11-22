@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Socket } from "socket.io-client";
 import ChatRoomType from "../../../../interfaces/ChatRoomType";
 import State from "../../../../interfaces/State";
@@ -19,6 +19,8 @@ const ChatRoomList = ({ socket, roomIdState, userId }: PropsType) => {
   useLayoutEffect(() => {
     socket.on("chatRoomList", (data: ChatRoomType[]) => {
       setRoomList(data);
+      console.log(data);
+
       if (data.length > 0) {
         setRoomId(data[0].room.id);
       }
@@ -46,7 +48,7 @@ const ChatRoomList = ({ socket, roomIdState, userId }: PropsType) => {
           active={roomId === value.room.id}
           data={value}
           roomIdState={roomIdState}
-          key={index}
+          key={`${index}${roomId}`}
         />
       );
     });

@@ -103,10 +103,14 @@ const ProductDetail = (): JSX.Element => {
               <S.Button
                 color={color.yellow}
                 onClick={async () => {
-                  buyProductRightOff(id);
-                  await createRoom(id);
-                  alert("즉시 구매하였습니다.");
-                  window.location.reload();
+                  try {
+                    await buyProductRightOff(id);
+                    await createRoom(id);
+                    alert("즉시 구매하였습니다.");
+                    window.location.reload();
+                  } catch (error) {
+                    alert("구매 실패");
+                  }
                 }}
               >
                 {product.immePrice.toLocaleString("ko-KR")}₩에 즉시 구매

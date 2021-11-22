@@ -1,4 +1,3 @@
-import { useLayoutEffect } from "react";
 import * as S from "./styles";
 
 const ProductCardSkeleton = (): JSX.Element => {

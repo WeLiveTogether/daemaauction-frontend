@@ -20,9 +20,9 @@ const Login = (): JSX.Element => {
     <S.Container>
       <S.GridContainer>
         <S.LoginContainer>
-          {buttons.map((value) => {
+          {buttons.map((value, index) => {
             const { component } = value;
-            const com = React.createElement(component);
+            const com = React.createElement(component, { key: index });
             return com;
           })}
         </S.LoginContainer>

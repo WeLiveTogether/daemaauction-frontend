@@ -2,8 +2,7 @@ import MyChat from "../MyChat/MyChat";
 import YourChat from "../YourChat/YourChat";
 import * as S from "./styles";
 import Send from "../../../../assets/icons/send.svg";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import State from "../../../../interfaces/State";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { Socket } from "socket.io-client";
 import ChattingSkeleton from "./ChattingSkeleton/ChattingSkeleton";
 
@@ -63,7 +62,7 @@ const Chatting = ({ socket, roomId, userId, userName }: PropsType) => {
   }, [messages, roomId]);
 
   const renderMessage = (messages || []).map((value, index, array) => {
-    const { msg, senderName } = value;
+    const { msg, senderName, senderId } = value;
 
     const component = senderName === userName ? MyChat : YourChat;
     let isDiff = false;
@@ -76,7 +75,7 @@ const Chatting = ({ socket, roomId, userId, userName }: PropsType) => {
 
     return (
       <>
-        {isDiff && <S.ChatMargin key={index} />}
+        {isDiff && <S.ChatMargin key={`${index}${senderId}`} />}
         {React.createElement(component, { message: msg, key: index })}
       </>
     );
