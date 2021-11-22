@@ -24,7 +24,9 @@ const ChatRoom = ({ active, roomIdState, data }: PropsType): JSX.Element => {
     try {
       const response = await getProductDetail(msgCnt);
       setProductName(response.data[0].title);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useLayoutEffect(() => {

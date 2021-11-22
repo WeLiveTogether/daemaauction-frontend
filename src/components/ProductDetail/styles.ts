@@ -19,7 +19,7 @@ export const Cover = styled.div`
   align-items: center;
   font: ${font.headline3};
   color: ${color.white};
-  z-index: 100;
+  z-index: 2;
 `;
 
 export const ImageContainer = styled.div`

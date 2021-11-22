@@ -12,13 +12,13 @@ export const optionArr = [
   ["악기", "장난감", "보드게임/카드", "기타용품"],
 ];
 const Nav = () => {
-  const history = useHistory();
   const onClick = (nav: string) => {
-    history.push(`/category?category=${nav}`);
+    window.location.href = `/category?category=${nav}`;
   };
-  const onClicksubCategory = (option: string, index: number) => {
-    history.push(`/category?category=${NavArr[index]}&subCategory=${option}`);
+  const onClicksubCategory = (option: string, nav: string) => {
+    window.location.href = `/category?category=${nav}&subcategory=${option}`;
   };
+
   return (
     <S.NavWrapper>
       {NavArr.map((nav, i) => (
@@ -34,8 +34,8 @@ const Nav = () => {
           {optionArr[i].map((option, index) => (
             <S.NavItemInner
               className="navItem"
-              key={index}
-              onClick={() => onClicksubCategory(option, i)}
+              key={i}
+              onClick={() => onClicksubCategory(option, nav)}
             >
               {option}
             </S.NavItemInner>

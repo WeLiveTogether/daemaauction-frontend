@@ -6,13 +6,12 @@ import ProductCard from "../ProductCard/ProductCard";
 import ProductCardSkeleton from "../ProductCardSkeleton/ProductCardSkeleton";
 const Main = (): JSX.Element => {
   const [hotProductList, setHotProductList] = useState<productListResponse>([]);
-  const [latestProductList, setLatestProductList] =
-    useState<productListResponse>([]);
+  const [latestProductList, setLatestProductList] = useState<productListResponse>([]);
   const [isPopularLoading, setIsPopularLoading] = useState<boolean>(false);
   const [isLatestLoading, setIsLatestLoading] = useState<boolean>(false);
 
-  const skeletons = [1, 2, 3, 4].map(() => {
-    return <ProductCardSkeleton />;
+  const skeletons = [1, 2, 3, 4].map((_, index) => {
+    return <ProductCardSkeleton key={index} />;
   });
 
   const setPopularProducts = async () => {
@@ -44,12 +43,12 @@ const Main = (): JSX.Element => {
     setLatestProducts();
   }, []);
 
-  const hotItemListRender = hotProductList.map((value) => {
-    return <ProductCard product={value} key={value.productId} />;
+  const hotItemListRender = hotProductList.map((value, index) => {
+    return <ProductCard product={value} key={index} />;
   });
 
-  const recentlyItemList: JSX.Element[] = latestProductList.map((value) => {
-    return <ProductCard product={value} key={value.productId} />;
+  const recentlyItemList: JSX.Element[] = latestProductList.map((value, index) => {
+    return <ProductCard product={value} key={index} />;
   });
 
   return (
@@ -59,20 +58,16 @@ const Main = (): JSX.Element => {
         <S.ItemContainer>
           <S.SmallHeader>
             <S.SmallTitle>인기있는 경매 물품</S.SmallTitle>
-            <S.StyledLink to="/">더보기 </S.StyledLink>
+            <S.StyledLink to="/hot">더보기 </S.StyledLink>
           </S.SmallHeader>
-          <S.HotItemList>
-            {isPopularLoading ? skeletons : hotItemListRender}
-          </S.HotItemList>
+          <S.HotItemList>{isPopularLoading ? skeletons : hotItemListRender}</S.HotItemList>
         </S.ItemContainer>
         <S.ItemContainer>
           <S.SmallHeader>
             <S.SmallTitle>최근 올라온 경매 물품</S.SmallTitle>
-            <S.StyledLink to="/">더보기 </S.StyledLink>
+            <S.StyledLink to="/recent">더보기 </S.StyledLink>
           </S.SmallHeader>
-          <S.HotItemList>
-            {isLatestLoading ? skeletons : recentlyItemList}{" "}
-          </S.HotItemList>
+          <S.HotItemList>{isLatestLoading ? skeletons : recentlyItemList} </S.HotItemList>
         </S.ItemContainer>
       </S.Container>
     </>

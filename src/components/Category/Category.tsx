@@ -169,15 +169,15 @@ const Category = ({ bigCategoryParam, subCategoryParam }: PropsType) => {
       <S.ItemContainer>
         {products ? (
           products.length > 0 ? (
-            products.map((value) => {
-              return <ProductCard product={value} />;
+            products.map((value, index) => {
+              return <ProductCard product={value} key={index} />;
             })
           ) : (
             <S.ItemNone>물품이 없습니다.</S.ItemNone>
           )
         ) : (
-          [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(() => {
-            return <ProductCardSkeleton />;
+          [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, index) => {
+            return <ProductCardSkeleton key={index} />;
           })
         )}
       </S.ItemContainer>

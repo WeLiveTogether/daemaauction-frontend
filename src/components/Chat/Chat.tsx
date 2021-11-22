@@ -23,7 +23,6 @@ const Chat = (): JSX.Element => {
   const setMyInfo = async () => {
     try {
       const data = await getMyInfo();
-      console.log(data);
 
       setUserId(data.data.body.user.userId);
       setUserName(data.data.body.user.username);
@@ -34,7 +33,7 @@ const Chat = (): JSX.Element => {
 
   useLayoutEffect(() => {
     setMyInfo();
-    const socket = io("http://192.168.137.198:3000", {
+    const socket = io("https://dhrtuseoak.herokuapp.com", {
       transports: ["websocket"],
     });
 
