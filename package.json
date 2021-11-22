@@ -1,4 +1,5 @@
 {
+  "homepage": "http://WeLiveTogether.github.io/daemaauction-frontend",
   "name": "reacttypescriptsetting",
   "version": "0.1.0",
   "private": true,
@@ -25,8 +26,7 @@
     "socket.io-client": "^4.4.0",
     "styled-reset": "^4.3.4",
     "typescript": "^4.3.2",
-    "web-vitals": "^1.1.2",
-    "homepage": "http://WeLiveTogether.github.io/daemaauction-frontend"
+    "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
