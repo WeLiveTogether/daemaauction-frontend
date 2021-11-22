@@ -19,15 +19,51 @@ const MainRouter: FC = (): JSX.Element => {
     <>
       <Switch>
         <Route exact path="/daemaauction-frontend/" component={MainContainer} />
-        <Route exact path="/hot" component={HotContainer} />
-        <Route exact path="/mypage" component={MyPageContainer} />
-        <Route exact path="/login" component={LoginContainer} />
-        <Route exact path="/recent" component={RecentContaier} />
-        <Route exact path="/chat" component={ChatContainer} />
-        <Route exact path="/login/success" component={LoginSuccessContainer} />
-        <Route exact path="/writing" component={WritingContainer} />
-        <Route exact path="/product/:id" component={ProductDetailContainer} />
-        <Route exact path="/category" component={CategoryContainer} />
+        <Route
+          exact
+          path="/daemaauction-frontend/hot"
+          component={HotContainer}
+        />
+        <Route
+          exact
+          path="/daemaauction-frontend/mypage"
+          component={MyPageContainer}
+        />
+        <Route
+          exact
+          path="/daemaauction-frontend/login"
+          component={LoginContainer}
+        />
+        <Route
+          exact
+          path="/daemaauction-frontend/recent"
+          component={RecentContaier}
+        />
+        <Route
+          exact
+          path="/daemaauction-frontend/chat"
+          component={ChatContainer}
+        />
+        <Route
+          exact
+          path="/daemaauction-frontend/login/success"
+          component={LoginSuccessContainer}
+        />
+        <Route
+          exact
+          path="/daemaauction-frontend/writing"
+          component={WritingContainer}
+        />
+        <Route
+          exact
+          path="/daemaauction-frontend/product/:id"
+          component={ProductDetailContainer}
+        />
+        <Route
+          exact
+          path="/daemaauction-frontend/category"
+          component={CategoryContainer}
+        />
         <Route component={Page404} />
       </Switch>
     </>
