@@ -16,21 +16,13 @@ const Nav = () => {
   const onClick = (nav: string) => {
     history.push(`/category?category=${nav}`);
   };
-  const onClicksubCategory = (option: string) => {
-    let categoryIndex = 0;
-    for (let i = 0; i < 6; i++) {
-      if (optionArr[i].indexOf(option)) {
-        categoryIndex = i;
-      }
-    }
-    history.push(
-      `/category?category=${NavArr[categoryIndex]}&subCategory=${option}`
-    );
+  const onClicksubCategory = (option: string, index: number) => {
+    history.push(`/category?category=${NavArr[index]}&subCategory=${option}`);
   };
   return (
     <S.NavWrapper>
       {NavArr.map((nav, i) => (
-        <S.NavItem to="#" key={i}>
+        <S.NavItem key={i}>
           <div
             className="navItemTitle"
             style={{ cursor: "pointer" }}
@@ -39,11 +31,11 @@ const Nav = () => {
             {nav}
             <img src={Select} alt="" />
           </div>
-          {optionArr[i].map((option, i) => (
+          {optionArr[i].map((option, index) => (
             <S.NavItemInner
               className="navItem"
-              key={i}
-              onClick={() => onClicksubCategory(option)}
+              key={index}
+              onClick={() => onClicksubCategory(option, i)}
             >
               {option}
             </S.NavItemInner>
