@@ -15,7 +15,6 @@ const Nav = () => {
   const onClick = (nav: string) => {
     window.location.href = `/category?category=${nav}`;
   };
-
   const onClicksubCategory = (option: string, nav: string) => {
     window.location.href = `/category?category=${nav}&subcategory=${option}`;
   };
@@ -23,12 +22,16 @@ const Nav = () => {
   return (
     <S.NavWrapper>
       {NavArr.map((nav, i) => (
-        <S.NavItem to="#" key={i}>
-          <div className="navItemTitle" style={{ cursor: "pointer" }} onClick={() => onClick(nav)}>
+        <S.NavItem key={i}>
+          <div
+            className="navItemTitle"
+            style={{ cursor: "pointer" }}
+            onClick={() => onClick(nav)}
+          >
             {nav}
             <img src={Select} alt="" />
           </div>
-          {optionArr[i].map((option, i) => (
+          {optionArr[i].map((option, index) => (
             <S.NavItemInner
               className="navItem"
               key={i}
