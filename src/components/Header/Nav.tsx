@@ -12,30 +12,19 @@ export const optionArr = [
   ["악기", "장난감", "보드게임/카드", "기타용품"],
 ];
 const Nav = () => {
-  const history = useHistory();
   const onClick = (nav: string) => {
-    history.push(`/category?category=${nav}`);
+    window.location.href = `/category?category=${nav}`;
   };
-  const onClicksubCategory = (option: string) => {
-    let categoryIndex = 0;
-    for (let i = 0; i < 6; i++) {
-      if (optionArr[i].indexOf(option)) {
-        categoryIndex = i;
-      }
-    }
-    history.push(
-      `/category?category=${NavArr[categoryIndex]}&subCategory=${option}`
-    );
+
+  const onClicksubCategory = (option: string, nav: string) => {
+    window.location.href = `/category?category=${nav}&subcategory=${option}`;
   };
+
   return (
     <S.NavWrapper>
       {NavArr.map((nav, i) => (
         <S.NavItem to="#" key={i}>
-          <div
-            className="navItemTitle"
-            style={{ cursor: "pointer" }}
-            onClick={() => onClick(nav)}
-          >
+          <div className="navItemTitle" style={{ cursor: "pointer" }} onClick={() => onClick(nav)}>
             {nav}
             <img src={Select} alt="" />
           </div>
@@ -43,7 +32,7 @@ const Nav = () => {
             <S.NavItemInner
               className="navItem"
               key={i}
-              onClick={() => onClicksubCategory(option)}
+              onClick={() => onClicksubCategory(option, nav)}
             >
               {option}
             </S.NavItemInner>
