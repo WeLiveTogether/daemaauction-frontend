@@ -1,8 +1,8 @@
 import uri from "../../../constance/uri";
-import { DEAMA_AUCTION, getRequest } from "../../axios";
+import { DAEMA_AUCTION, getRequest } from "../../axios";
 
 export const buyProductRightOff = async (id: string) => {
-  const request = getRequest(DEAMA_AUCTION);
+  const request = getRequest(DAEMA_AUCTION);
   try {
     return await request.post(`${uri.buyProduct}/${id}`);
   } catch (error) {
@@ -11,7 +11,7 @@ export const buyProductRightOff = async (id: string) => {
 };
 
 export const attendProduct = async (id: string, price: number) => {
-  const request = getRequest(DEAMA_AUCTION);
+  const request = getRequest(DAEMA_AUCTION);
   try {
     return await request.post(`${uri.attendProduct}/${id}`, null, {
       params: {

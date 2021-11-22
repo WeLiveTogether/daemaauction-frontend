@@ -1,16 +1,16 @@
 import * as S from "./styles";
 import { defaultProfile } from "../../../assets";
-import { getUserInfo } from "../../../utils/api/Mypage";
 import { useEffect, useState } from "react";
-const Profile = (): JSX.Element => {
-  const [userName, setUserName] = useState<string>("");
-  const setUserInformationFunc = async () => {
-    const userInfo = await getUserInfo();
-    setUserName(userInfo?.data?.body?.user?.username);
-  };
-  useEffect(() => {
-    setUserInformationFunc();
-  }, []);
+import { MyPageProductList, Product } from "../../../models/dto/response/productListResponse";
+
+interface PropsType {
+  myPageInfo: MyPageProductList;
+}
+
+const Profile = ({ myPageInfo }: PropsType): JSX.Element => {
+  const { userName } = myPageInfo;
+
+
   return (
     <>
       <S.ProfileContainer>
