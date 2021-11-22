@@ -2,8 +2,7 @@ import MyChat from "../MyChat/MyChat";
 import YourChat from "../YourChat/YourChat";
 import * as S from "./styles";
 import Send from "../../../../assets/icons/send.svg";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import State from "../../../../interfaces/State";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { Socket } from "socket.io-client";
 import ChattingSkeleton from "./ChattingSkeleton/ChattingSkeleton";
 

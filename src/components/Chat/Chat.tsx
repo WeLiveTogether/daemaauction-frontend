@@ -1,18 +1,11 @@
 import * as S from "./styles";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import ChatRoomList from "./component/ChatRoomList/ChatRoomList";
 import Chatting from "./component/Chatting/Chatting";
 import { io, Socket } from "socket.io-client";
 import { getMyInfo } from "../../utils/api/My";
-import { User } from "../../models/dto/response/myInfoResponse";
 import ChatRoomSkeleton from "./component/ChatRoomList/ChatRoomSkeleton/ChatRoomSkeleton";
 import ChattingSkeleton from "./component/Chatting/ChattingSkeleton/ChattingSkeleton";
-
-interface MsgRes {
-  msg: "string";
-  roomId: number;
-  userId: number;
-}
 
 const Chat = (): JSX.Element => {
   const [socket, setSocket] = useState<Socket | null>(null);

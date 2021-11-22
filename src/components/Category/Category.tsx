@@ -1,14 +1,11 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Select } from "../../assets";
 import { getBigCategory, getSubCategory } from "../../utils/api/Category";
 import DropDown from "./DropDown/DropDown";
 import { Product } from "../../models/dto/response/productListResponse";
 import * as S from "./styled";
-import { AxiosResponse } from "axios";
-import categoryResponse from "../../models/dto/response/categoryResponse";
 import ProductCard from "../ProductCard/ProductCard";
-import { getSuggestedQuery } from "@testing-library/dom";
 import ProductCardSkeleton from "../ProductCardSkeleton/ProductCardSkeleton";
 interface PropsType {
   bigCategoryParam: string | null;

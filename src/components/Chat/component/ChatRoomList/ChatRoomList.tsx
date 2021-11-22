@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Socket } from "socket.io-client";
 import ChatRoomType from "../../../../interfaces/ChatRoomType";
 import State from "../../../../interfaces/State";

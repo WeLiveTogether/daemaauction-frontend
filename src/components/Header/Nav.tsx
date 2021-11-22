@@ -1,7 +1,6 @@
-import React from "react";
 import * as S from "./style";
 import { Select } from "../../assets";
-import { useHistory } from "react-router";
+
 const NavArr = ["의류", "전자기기", "음식", "도서", "생활용품", "완구/취미"];
 export const optionArr = [
   ["상의", "하의", "액세서리", "신발", "성별"],
