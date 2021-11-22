@@ -43,12 +43,12 @@ const Main = (): JSX.Element => {
     setLatestProducts();
   }, []);
 
-  const hotItemListRender = hotProductList.map((value) => {
-    return <ProductCard product={value} key={value.productId} />;
+  const hotItemListRender = hotProductList.map((value, index) => {
+    return <ProductCard product={value} key={index} />;
   });
 
-  const recentlyItemList: JSX.Element[] = latestProductList.map((value) => {
-    return <ProductCard product={value} key={value.productId} />;
+  const recentlyItemList: JSX.Element[] = latestProductList.map((value, index) => {
+    return <ProductCard product={value} key={index} />;
   });
 
   return (
