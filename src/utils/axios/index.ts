@@ -10,7 +10,7 @@ const instance = axios.create({
   withCredentials: true,
 });
 
-export const DEAMA_AUCTION = "https://daemaauction.herokuapp.com";
+export const DAEMA_AUCTION = "https://daemaauction.herokuapp.com";
 export const DHRTUSEOAK = "https://dhrtuseoak.herokuapp.com";
 
 const EXPIRE_MINUTE = 30;
@@ -40,7 +40,7 @@ const refresh = async (config: AxiosRequestConfig) => {
     //토큰이 만료됨
     try {
       const request = axios.create({
-        baseURL: DEAMA_AUCTION,
+        baseURL: DAEMA_AUCTION,
         withCredentials: true,
       });
       const { access_token } = (
@@ -79,7 +79,7 @@ instance.interceptors.response.use(
 );
 
 export const getRequest = (
-  baseURL: typeof DEAMA_AUCTION | typeof DHRTUSEOAK
+  baseURL: typeof DAEMA_AUCTION | typeof DHRTUSEOAK
 ) => {
   instance.defaults["baseURL"] = baseURL;
   return instance;

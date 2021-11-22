@@ -14,4 +14,12 @@ export interface Product {
 
 type productListResponse = Product[];
 
+
+export interface MyPageProductList {
+  email: string;
+  productResponseList: Product[];
+  profileImageUrl: string;
+  userName: string;
+}
+
 export default productListResponse;
