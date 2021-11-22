@@ -23,18 +23,14 @@ const Nav = () => {
     <S.NavWrapper>
       {NavArr.map((nav, i) => (
         <S.NavItem key={i}>
-          <div
-            className="navItemTitle"
-            style={{ cursor: "pointer" }}
-            onClick={() => onClick(nav)}
-          >
+          <div className="navItemTitle" style={{ cursor: "pointer" }} onClick={() => onClick(nav)}>
             {nav}
             <img src={Select} alt="" />
           </div>
           {optionArr[i].map((option, index) => (
             <S.NavItemInner
               className="navItem"
-              key={i}
+              key={index}
               onClick={() => onClicksubCategory(option, nav)}
             >
               {option}

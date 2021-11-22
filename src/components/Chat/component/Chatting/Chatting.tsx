@@ -63,7 +63,7 @@ const Chatting = ({ socket, roomId, userId, userName }: PropsType) => {
   }, [messages, roomId]);
 
   const renderMessage = (messages || []).map((value, index, array) => {
-    const { msg, senderName } = value;
+    const { msg, senderName, senderId } = value;
 
     const component = senderName === userName ? MyChat : YourChat;
     let isDiff = false;
@@ -76,7 +76,7 @@ const Chatting = ({ socket, roomId, userId, userName }: PropsType) => {
 
     return (
       <>
-        {isDiff && <S.ChatMargin key={index} />}
+        {isDiff && <S.ChatMargin key={`${index}${senderId}`} />}
         {React.createElement(component, { message: msg, key: index })}
       </>
     );
