@@ -1,6 +1,6 @@
-import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { color } from "../../styles/color";
+import { font } from "../../styles/font";
 
 export const Container = styled.button`
   width: 100%;
@@ -10,10 +10,25 @@ export const Container = styled.button`
   border: 0;
   border-radius: 5px;
   background-color: transparent;
+  position: relative;
   text-align: left;
   &:active {
     background-color: ${color.black}30;
   }
+`;
+
+export const Cover = styled.div`
+  background-color: ${color.black}90;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: ${font.subtitle};
+  color: ${color.white};
+  border-radius: 5px;
+  z-index: 100;
 `;
 
 export const ItemImg = styled.div`

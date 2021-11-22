@@ -79,9 +79,6 @@ export const CategoryItem = styled.div`
     height: 100%;
     display: flex;
     justify-content: space-between;
-    &{
-        color: ${color.gray}
-    }
     & :hover{
         cursor: pointer;
     }

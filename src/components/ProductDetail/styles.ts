@@ -6,6 +6,20 @@ export const Container = styled.div`
   width: 100%;
   grid-column: 1/13;
   margin-top: 60px;
+  position: relative;
+`;
+
+export const Cover = styled.div`
+  background-color: ${color.black}90;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: ${font.headline3};
+  color: ${color.white};
+  z-index: 2;
 `;
 
 export const ImageContainer = styled.div`

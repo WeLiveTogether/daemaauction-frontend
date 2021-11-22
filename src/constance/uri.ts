@@ -10,6 +10,8 @@ enum uri {
   myProduct = "/api/mypage",
   productCategory = "/product/category",
   productSubCategory = "/product/subCategory",
+  attendProduct = "/api/attend-auction",
+  buyProduct = "/api/buy-product",
 }
 
 export default uri;

@@ -6,9 +6,6 @@ export interface postProductInfo {
     productSaleStatus: string;
     subCategory: string;
     title: string;
-    userSeq: number;
 }
 
-type writingProductInfo = postProductInfo[]
-
-export default writingProductInfo;
+export default postProductInfo;

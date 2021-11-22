@@ -1,7 +1,6 @@
-import * as S from './styles';
-import Google from '../Oauth/Google/Google';
-import { color } from '../../styles/color';
-import React from 'react';
+import * as S from "./styles";
+import Google from "../Oauth/Google/Google";
+import React from "react";
 
 const Login = (): JSX.Element => {
   interface Button {
@@ -10,10 +9,10 @@ const Login = (): JSX.Element => {
 
   const buttons: Button[] = [
     {
-      component: Google
+      component: Google,
     },
     // {
-      // component: 
+    // component:
     // }
   ];
 
@@ -21,9 +20,9 @@ const Login = (): JSX.Element => {
     <S.Container>
       <S.GridContainer>
         <S.LoginContainer>
-          {buttons.map((value) => {
+          {buttons.map((value, index) => {
             const { component } = value;
-            const com = React.createElement(component);
+            const com = React.createElement(component, { key: index });
             return com;
           })}
         </S.LoginContainer>
