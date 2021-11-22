@@ -18,7 +18,7 @@ const MainRouter: FC = (): JSX.Element => {
   return (
     <>
       <Switch>
-        <Route exact path="/" component={MainContainer} />
+        <Route exact path="/daemaauction-frontend/" component={MainContainer} />
         <Route exact path="/hot" component={HotContainer} />
         <Route exact path="/mypage" component={MyPageContainer} />
         <Route exact path="/login" component={LoginContainer} />

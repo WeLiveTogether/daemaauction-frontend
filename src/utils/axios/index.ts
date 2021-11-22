@@ -30,7 +30,7 @@ const refresh = async (config: AxiosRequestConfig) => {
 
   if (!expireAt) {
     //만료시간이 없음
-    window.location.href = "/login";
+    window.location.href = "/daemaauction-frontend/login";
     return config;
   }
 
@@ -50,7 +50,7 @@ const refresh = async (config: AxiosRequestConfig) => {
       accessToken = access_token;
     } catch (error) {
       //리프레시 실패(리스레시 토큰 만료)
-      window.location.href = "/login";
+      window.location.href = "/daemaauction-frontend/login";
       return config;
     }
   }
