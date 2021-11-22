@@ -1,15 +1,19 @@
 import * as S from "./styles";
 import { defaultProfile } from "../../../assets";
-import { useEffect, useState } from "react";
-import { MyPageProductList, Product } from "../../../models/dto/response/productListResponse";
+import { MyPageProductList } from "../../../models/dto/response/productListResponse";
 
 interface PropsType {
   myPageInfo: MyPageProductList;
+  sellCount: number;
+  soldCount: number;
 }
 
-const Profile = ({ myPageInfo }: PropsType): JSX.Element => {
+const Profile = ({
+  myPageInfo,
+  sellCount,
+  soldCount,
+}: PropsType): JSX.Element => {
   const { userName } = myPageInfo;
-
 
   return (
     <>
@@ -21,11 +25,9 @@ const Profile = ({ myPageInfo }: PropsType): JSX.Element => {
           </S.ProfileInfoTop>
           <S.ItemCountContainer>
             <div>판매한 물품&nbsp;</div>
-            <S.ItemCount>21개</S.ItemCount>
+            <S.ItemCount>{soldCount}개</S.ItemCount>
             <div>판매중인 물품&nbsp;</div>
-            <S.ItemCount>6개</S.ItemCount>
-            <div>구매한 물품&nbsp;</div>
-            <S.ItemCount>15개</S.ItemCount>
+            <S.ItemCount>{sellCount}개</S.ItemCount>
           </S.ItemCountContainer>
         </S.ProfileInfo>
       </S.ProfileContainer>

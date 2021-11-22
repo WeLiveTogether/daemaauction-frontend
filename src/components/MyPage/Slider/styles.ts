@@ -4,7 +4,7 @@ export const Container = styled.div<{ x: number }>`
   display: flex;
   position: absolute;
   transform: translateX(${(props) => props.x}px);
-  transition: transform 0.5s ease-out;
+  transition: transform 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   column-gap: 30px;
 `;
 

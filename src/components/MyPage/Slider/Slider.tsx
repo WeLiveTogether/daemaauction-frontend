@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { leftChevron, rightChevron } from "../../../assets";
 import * as S from "./styles";
 
@@ -41,6 +41,14 @@ const Slider = ({ Item }: propsType): JSX.Element => {
       }
     }
   };
+
+  useLayoutEffect(() => {
+    if (page.current && container.current) {
+      page.current.style.width = `${
+        container.current.clientWidth * Item.length + 30 * (Item.length - 1)
+      }px`;
+    }
+  }, []);
 
   return (
     <>
